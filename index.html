@@ -304,17 +304,34 @@
             </div>
             <div class="drag-center">Hidden AI &middot; The Interview Coach Beside You</div>
             <div class="drag-right">
-              <div class="nav-btn" style="color:#9ca3af;font-size:9px">&#9664;</div>
-              <div class="nav-btn" style="color:#9ca3af;font-size:9px">&#8962;</div>
-              <div class="nav-btn" style="color:#ef4444;font-size:9px">&#10005;</div>
+              <!-- back + home group -->
+              <div style="display:flex;align-items:center;border-radius:6px;border:1px solid rgba(75,85,99,.6);overflow:hidden">
+                <div style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;color:rgba(156,163,175,.6);font-size:9px;border-right:1px solid rgba(75,85,99,.6)">&#9664;</div>
+                <div style="width:20px;height:20px;display:flex;align-items:center;justify-content:center;color:rgba(156,163,175,.6);font-size:9px">&#8962;</div>
+              </div>
+              <!-- collapse btn: round, sky-400 border, lightbulb -->
+              <div style="width:24px;height:24px;border-radius:50%;background:#111827;border:1px solid rgba(56,189,248,.4);display:flex;align-items:center;justify-content:center">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
             </div>
           </div>
           <div class="app-header">
-            <div class="mode-badge">&#127919; INTERVIEW</div>
-            <div class="model-name">&middot; claude-3-5-sonnet</div>
-            <div class="tab-select">Session &#9660;</div>
-            <div class="vis-btn">&#128247; Vision</div>
-            <div class="note-btn">Notes</div>
+            <!-- left: mode icon + mode text + model -->
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="width:20px;height:20px;border-radius:6px;background:#0284c7;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
+              <span style="font-size:11px;font-weight:600;color:#38bdf8">&#127919; Interview</span>
+              <span style="font-size:11px;color:#52525b">&middot; claude-3-5-sonnet</span>
+            </div>
+            <!-- center: tab dropdown -->
+            <div class="tab-select" style="margin-left:auto;margin-right:auto">Session &#9660;</div>
+            <!-- right: vision + notes + screenshot -->
+            <div style="display:flex;align-items:center;gap:5px">
+              <div class="vis-btn">&#128247; Vision</div>
+              <div class="note-btn">Notes</div>
+              <div style="padding:3px 8px;border-radius:6px;font-size:11px;background:rgba(255,255,255,.04);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.06)">&#128247;</div>
+            </div>
           </div>
           <div class="q-box">
             <div class="q-label">Question</div>
@@ -517,7 +534,7 @@
                 <div style="width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:8px;border-right:1px solid rgba(75,85,99,.6)">&#9664;</div>
                 <div style="width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:8px">&#8962;</div>
               </div>
-              <div style="width:18px;height:18px;border-radius:5px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(255,255,255,.3)">&#8722;</div>
+              <div style="width:20px;height:20px;border-radius:50%;background:#111827;border:1px solid rgba(56,189,248,.4);display:flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
             </div>
           </div>
           <!-- Header row -->
@@ -529,6 +546,7 @@
               <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:5px;padding:2px 6px;font-size:9px;color:rgba(255,255,255,.45)">Session &#9660;</div>
               <div style="background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);border-radius:5px;padding:2px 6px;font-size:9px;color:#c084fc">&#128247; Vision</div>
               <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:5px;padding:2px 6px;font-size:9px;color:rgba(255,255,255,.3)">Notes</div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:5px;padding:2px 5px;font-size:9px;color:rgba(255,255,255,.3)">&#128247;</div>
             </div>
           </div>
           <!-- Question box -->
@@ -577,7 +595,7 @@
                 <div style="width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:8px;border-right:1px solid rgba(75,85,99,.6)">&#9664;</div>
                 <div style="width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:8px">&#8962;</div>
               </div>
-              <div style="width:18px;height:18px;border-radius:5px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(255,255,255,.3)">&#8722;</div>
+              <div style="width:20px;height:20px;border-radius:50%;background:#111827;border:1px solid rgba(56,189,248,.4);display:flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
             </div>
           </div>
           <!-- Header row — Vision ON (green) -->
