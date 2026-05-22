@@ -220,43 +220,44 @@
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
-    /* ── Mockup play animations (20s loop) ──────────────────────
-       Phase A  0–10%  (0–2s):  Listening — blank question, blank answer
-       Phase B 10–45%  (2–9s):  Question reveals (live transcript)
-       Phase C 45–50%  (9–10s): Processing pause
-       Phase D 50–85% (10–17s): Answer streams line by line
-       Phase E 85–100%(17–20s): Hold complete answer, then reset
+    /* ── Mockup play animations (16s loop) ──────────────────────
+       Phase A  0–12%  (0–2s):   Listening — question blank, answer blank
+       Phase B 12–44%  (2–7s):   Question fades in (live transcript)
+       Phase C 44–50%  (7–8s):   Processing pause
+       Phase D 50–90%  (8–14.4s): Answer lines stream in (opacity only — no transform, preserve-3d compat)
+       Phase E 90–100% (14.4–16s): Hold then reset
     ── */
     /* Live dot enhanced pulse */
-    @keyframes live-pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5);opacity:1}50%{box-shadow:0 0 0 5px rgba(74,222,128,0);opacity:.7}}
-    .anim-live{animation:live-pulse 1.2s ease-in-out infinite!important}
+    @keyframes live-pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.6);opacity:1}60%{box-shadow:0 0 0 6px rgba(74,222,128,0);opacity:.6}}
+    .anim-live{animation:live-pulse 1.1s ease-in-out infinite!important}
 
-    /* Listening status overlay */
-    @keyframes show-listen{0%,8%{opacity:1;transform:translateY(0)}45%,100%{opacity:0;transform:translateY(-4px)}}
-    @keyframes show-stream{0%,48%{opacity:0;transform:translateY(4px)}53%,88%{opacity:1;transform:translateY(0)}93%,100%{opacity:0}}
-    .ttft-listen{position:absolute;animation:show-listen 20s ease-in-out infinite;display:flex;align-items:center;gap:8px}
-    .ttft-stream{position:absolute;animation:show-stream 20s ease-in-out infinite;display:flex;align-items:center;gap:8px}
+    /* TTFT status bar — two overlapping labels */
+    @keyframes show-listen{0%,10%{opacity:1}44%,100%{opacity:0}}
+    @keyframes show-stream{0%,49%{opacity:0}54%,88%{opacity:1}93%,100%{opacity:0}}
+    .ttft-listen{position:absolute;animation:show-listen 16s linear infinite;display:flex;align-items:center;gap:8px}
+    .ttft-stream{position:absolute;animation:show-stream 16s linear infinite;display:flex;align-items:center;gap:8px}
 
-    /* Question area states */
-    @keyframes show-qblank{0%,8%{opacity:1}12%,100%{opacity:0}}
-    @keyframes show-qtext{0%,9%{opacity:0;transform:translateY(6px);max-height:0}13%{opacity:1;transform:translateY(0);max-height:80px}88%{opacity:1;transform:translateY(0);max-height:80px}93%,100%{opacity:0;transform:translateY(-4px);max-height:0}}
-    .q-blank-state{color:rgba(74,222,128,.6);font-size:12px;font-weight:500;display:flex;align-items:center;gap:6px;animation:show-qblank 20s ease-in-out infinite}
-    .q-anim-text{animation:show-qtext 20s ease-in-out infinite;overflow:hidden}
+    /* Question area */
+    @keyframes show-qblank{0%,10%{opacity:1}14%,100%{opacity:0}}
+    @keyframes show-qtext{0%,11%{opacity:0}15%,88%{opacity:1}93%,100%{opacity:0}}
+    .q-blank-state{color:rgba(74,222,128,.7);font-size:12px;font-weight:500;display:flex;align-items:center;gap:6px;animation:show-qblank 16s linear infinite}
+    .q-anim-text{animation:show-qtext 16s linear infinite}
 
-    /* Answer panel lines */
-    @keyframes ans0{0%,49%{opacity:0;transform:translateY(5px)}54%,88%{opacity:1;transform:translateY(0)}93%,100%{opacity:0}}
-    @keyframes ans1{0%,54%{opacity:0;transform:translateY(5px)}59%,88%{opacity:1;transform:translateY(0)}93%,100%{opacity:0}}
-    @keyframes ans2{0%,59%{opacity:0;transform:translateY(5px)}64%,88%{opacity:1;transform:translateY(0)}93%,100%{opacity:0}}
-    @keyframes ans3{0%,64%{opacity:0;transform:translateY(5px)}69%,88%{opacity:1;transform:translateY(0)}93%,100%{opacity:0}}
-    @keyframes ans4{0%,69%{opacity:0;transform:translateY(5px)}74%,88%{opacity:1;transform:translateY(0)}93%,100%{opacity:0}}
-    .aline-0{animation:ans0 20s ease-out infinite}
-    .aline-1{animation:ans1 20s ease-out infinite}
-    .aline-2{animation:ans2 20s ease-out infinite}
-    .aline-3{animation:ans3 20s ease-out infinite}
-    .aline-4{animation:ans4 20s ease-out infinite}
-    /* cursor only shows when streaming */
-    @keyframes show-cursor{0%,49%{opacity:0}50%,88%{opacity:1}93%,100%{opacity:0}}
-    .anim-cursor-wrap{animation:show-cursor 20s ease-in-out infinite}
+    /* Answer lines — opacity only (no transform — preserve-3d parent) */
+    @keyframes ans0{0%,49%{opacity:0}53%,88%{opacity:1}93%,100%{opacity:0}}
+    @keyframes ans1{0%,57%{opacity:0}61%,88%{opacity:1}93%,100%{opacity:0}}
+    @keyframes ans2{0%,63%{opacity:0}67%,88%{opacity:1}93%,100%{opacity:0}}
+    @keyframes ans3{0%,69%{opacity:0}73%,88%{opacity:1}93%,100%{opacity:0}}
+    @keyframes ans4{0%,75%{opacity:0}79%,88%{opacity:1}93%,100%{opacity:0}}
+    .aline-0{animation:ans0 16s linear infinite}
+    .aline-1{animation:ans1 16s linear infinite}
+    .aline-2{animation:ans2 16s linear infinite}
+    .aline-3{animation:ans3 16s linear infinite}
+    .aline-4{animation:ans4 16s linear infinite}
+
+    /* Cursor — appears when streaming starts */
+    @keyframes show-cursor{0%,49%{opacity:0}53%,88%{opacity:1}93%,100%{opacity:0}}
+    .anim-cursor-wrap{animation:show-cursor 16s linear infinite}
 
     @media(max-width:800px){
       .screens-r1,.screens-r2{grid-template-columns:1fr !important}
@@ -391,7 +392,7 @@
               <span class="anim-cursor-wrap"><div class="a-cursor"></div></span>
             </div>
           </div>
-          <div class="ttft-row" style="position:relative;min-height:28px">
+          <div class="ttft-row" style="position:relative;min-height:28px;overflow:hidden">
             <!-- Listening status -->
             <div class="ttft-listen">
               <div class="ttft-dot anim-live" style="background:#4ade80"></div>
