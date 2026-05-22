@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hidden AI &mdash; The Interview Coach Beside You</title>
-  <meta name="description" content="Hidden AI &mdash; Silent interview coach. Real-time answers grounded in your resume. Invisible to screen share." />
+  <title>Hidden AI &mdash; Real-time Interview Answers, Completely Invisible</title>
+  <meta name="description" content="Hidden AI listens to your interview on Zoom, Teams, or Google Meet and streams answers in under a second. Grounded in your resume. Invisible to screen share." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --bg:#050507; --bg2:#0a0a0f; --bg3:#0f0f18;
-      --bd:rgba(255,255,255,.06); --bd2:rgba(255,255,255,.1);
-      --tx:#f0f0f8; --mu:#6b7280; --mu2:#9ca3af;
-      --bl:#6366f1; --bl2:#818cf8; --pu:#a855f7; --cy:#22d3ee; --gr:#4ade80;
+      --bg:#050507;--bg2:#0a0a0f;--bg3:#0f0f18;
+      --bd:rgba(255,255,255,.06);--bd2:rgba(255,255,255,.1);
+      --tx:#f0f0f8;--mu:#6b7280;--mu2:#9ca3af;
+      --bl:#6366f1;--bl2:#818cf8;--pu:#a855f7;--cy:#22d3ee;--gr:#4ade80;
     }
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--tx);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -21,17 +21,17 @@
     /* orbs */
     .orbs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
     .orb{position:absolute;border-radius:50%;filter:blur(120px)}
-    .o1{width:700px;height:700px;background:radial-gradient(circle,#6366f1,transparent);top:-200px;left:-200px;opacity:.25;animation:f1 20s ease-in-out infinite}
-    .o2{width:600px;height:600px;background:radial-gradient(circle,#a855f7,transparent);top:30%;right:-200px;opacity:.2;animation:f2 25s ease-in-out infinite}
-    .o3{width:500px;height:500px;background:radial-gradient(circle,#22d3ee,transparent);bottom:-100px;left:30%;opacity:.12;animation:f3 18s ease-in-out infinite}
+    .o1{width:700px;height:700px;background:radial-gradient(circle,#6366f1,transparent);top:-200px;left:-200px;opacity:.22;animation:f1 20s ease-in-out infinite}
+    .o2{width:600px;height:600px;background:radial-gradient(circle,#a855f7,transparent);top:30%;right:-200px;opacity:.18;animation:f2 25s ease-in-out infinite}
+    .o3{width:500px;height:500px;background:radial-gradient(circle,#22d3ee,transparent);bottom:-100px;left:30%;opacity:.1;animation:f3 18s ease-in-out infinite}
     @keyframes f1{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,60px)}}
     @keyframes f2{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
     @keyframes f3{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-50px)}}
-    body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:60px 60px}
+    body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.01) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.01) 1px,transparent 1px);background-size:60px 60px}
     nav,main,footer{position:relative;z-index:1}
 
     /* nav */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:64px;background:rgba(5,5,7,.8);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:64px;background:rgba(5,5,7,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
     .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.5px;color:white;text-decoration:none}
     .logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(99,102,241,.4);flex-shrink:0}
     .nav-links{display:flex;align-items:center;gap:28px}
@@ -49,44 +49,34 @@
     .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:100px;border:1px solid rgba(99,102,241,.3);background:rgba(99,102,241,.08);font-size:12px;font-weight:600;color:var(--bl2);letter-spacing:.5px;text-transform:uppercase;margin-bottom:32px}
     .edot{width:6px;height:6px;border-radius:50%;background:var(--bl);animation:pulse 2s infinite}
     @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(99,102,241,.4)}50%{opacity:.7;box-shadow:0 0 0 6px rgba(99,102,241,0)}}
-    h1{font-size:clamp(46px,7.5vw,88px);font-weight:900;line-height:1.0;letter-spacing:-3px;margin-bottom:28px;color:white}
+    h1{font-size:clamp(44px,7vw,84px);font-weight:900;line-height:1.0;letter-spacing:-3px;margin-bottom:28px;color:white}
     .grad{background:linear-gradient(135deg,#818cf8 0%,#c084fc 50%,#22d3ee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .hero-sub{font-size:clamp(16px,1.8vw,19px);color:var(--mu2);max-width:540px;margin:0 auto 44px;line-height:1.75}
+    .hero-sub{font-size:clamp(16px,1.8vw,19px);color:var(--mu2);max-width:600px;margin:0 auto 16px;line-height:1.75}
+    .platform-pills{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+    .pill{padding:4px 12px;border-radius:100px;border:1px solid var(--bd2);font-size:12px;font-weight:500;color:var(--mu2)}
     .hero-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
     .hero-note{font-size:12px;color:var(--mu);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
     .hero-note span{display:flex;align-items:center;gap:5px}
 
-    /* REAL APP MOCKUP */
-    .mockup-wrap{margin-top:64px;width:100%;max-width:860px;perspective:1200px}
+    /* app mockup */
+    .mockup-wrap{margin-top:72px;width:100%;max-width:860px;perspective:1200px}
     .mockup-tilt{transform:rotateX(6deg) rotateY(-2deg);transform-style:preserve-3d;transition:transform .4s ease;border-radius:20px;box-shadow:0 60px 120px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06),0 0 80px rgba(99,102,241,.15)}
     .mockup-wrap:hover .mockup-tilt{transform:rotateX(1deg) rotateY(0deg)}
     .app-window{border-radius:20px;overflow:hidden;background:#0d0d14;border:1px solid rgba(255,255,255,.08)}
-
-    /* drag bar */
     .drag-bar{height:44px;background:linear-gradient(90deg,#111118,#16161f);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;padding:0 14px;gap:10px}
-    .drag-left{display:flex;align-items:center;gap:6px}
     .timer-badge{background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);border-radius:6px;padding:3px 9px;font-size:11px;font-weight:600;color:#818cf8;letter-spacing:.3px}
     .drag-center{font-size:12px;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.3px;flex:1;text-align:center}
     .drag-right{display:flex;align-items:center;gap:6px}
     .nav-btn{width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:11px}
-
-    /* header row */
     .app-header{padding:10px 14px 8px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.04)}
     .mode-badge{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.3px;background:rgba(14,165,233,.15);color:#38bdf8;border:1px solid rgba(14,165,233,.25)}
     .model-name{font-size:11px;color:rgba(255,255,255,.35);font-weight:500}
     .tab-select{margin-left:auto;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:3px 8px;font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px}
     .vis-btn{padding:3px 8px;border-radius:6px;font-size:11px;background:rgba(168,85,247,.12);color:#c084fc;border:1px solid rgba(168,85,247,.2)}
     .note-btn{padding:3px 8px;border-radius:6px;font-size:11px;background:rgba(255,255,255,.04);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.06)}
-
-    /* question box */
     .q-box{margin:12px 14px 0;background:#0a0a12;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px 14px}
     .q-label{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
     .q-text{font-size:13px;color:rgba(255,255,255,.7);line-height:1.55}
-
-    /* answer panel */
-    .a-panel{margin:10px 14px 14px;background:#f8f9fa;border-radius:10px;padding:14px;min-height:90px}
-    .a-line{height:11px;border-radius:4px;background:#dde1e7;margin-bottom:8px}
-    .a-line:last-child{margin-bottom:0;width:65%}
     .a-cursor{display:inline-block;width:2px;height:14px;background:#6366f1;border-radius:1px;animation:blink .9s infinite;vertical-align:middle;margin-left:3px}
     @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
     .ttft-row{padding:6px 14px 10px;display:flex;align-items:center;gap:8px;border-top:1px solid rgba(255,255,255,.04)}
@@ -96,17 +86,16 @@
     /* sections */
     section{padding:100px 6%}
     .sec-label{font-size:12px;font-weight:700;color:var(--bl2);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
-    h2{font-size:clamp(30px,4.5vw,50px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;color:white;margin-bottom:20px}
+    h2{font-size:clamp(28px,4vw,48px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;color:white;margin-bottom:20px}
     .sec-sub{font-size:17px;color:var(--mu2);max-width:560px;line-height:1.75}
     .center{text-align:center}
     .center .sec-sub{margin:0 auto 60px}
 
-    /* grid */
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    /* grids */
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
     @media(max-width:900px){.grid-4{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr}}
-    @media(max-width:600px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+    @media(max-width:600px){.grid-3,.grid-4{grid-template-columns:1fr}}
 
     /* cards */
     .card{background:var(--bg2);border:1px solid var(--bd);border-radius:16px;padding:28px;transition:border-color .2s,transform .2s}
@@ -114,6 +103,25 @@
     .card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px}
     .card h3{font-size:16px;font-weight:700;color:white;margin-bottom:8px}
     .card p{font-size:14px;color:var(--mu2);line-height:1.65}
+
+    /* how it works */
+    .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1000px;margin:0 auto}
+    @media(max-width:800px){.how-grid{grid-template-columns:1fr;gap:48px}}
+    .steps{display:flex;flex-direction:column;gap:24px;max-width:640px}
+    .step{display:flex;align-items:flex-start;gap:20px}
+    .step-num{width:40px;height:40px;border-radius:12px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.25);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--bl2);flex-shrink:0}
+    .step-body h4{font-size:16px;font-weight:700;color:white;margin-bottom:4px}
+    .step-body p{font-size:14px;color:var(--mu2);line-height:1.6}
+
+    /* settings card */
+    .settings-demo{background:#111118;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px;width:100%;max-width:340px}
+    .sd-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+    .sd-label{font-size:12px;color:var(--mu);font-weight:500}
+    .sd-val{font-size:12px;color:white;font-weight:600}
+    .sd-badge{padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700}
+    .sd-divider{height:1px;background:rgba(255,255,255,.05);margin:16px 0}
+    .sd-toggle{width:36px;height:20px;border-radius:10px;background:linear-gradient(90deg,#6366f1,#a855f7);position:relative;flex-shrink:0}
+    .sd-toggle::after{content:'';position:absolute;right:3px;top:3px;width:14px;height:14px;border-radius:50%;background:white}
 
     /* screen cards */
     .screen-card{background:var(--bg2);border:1px solid var(--bd);border-radius:20px;overflow:hidden;transition:border-color .3s,transform .3s}
@@ -123,17 +131,16 @@
     .sc-info h3{font-size:15px;font-weight:700;color:white;margin-bottom:6px}
     .sc-info p{font-size:13px;color:var(--mu2);line-height:1.6}
 
-    /* bubble preview */
+    /* bubble */
     .bubble-wrap{position:relative;width:80px;height:80px}
     .bubble{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);box-shadow:0 0 40px rgba(99,102,241,.5);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:white;animation:bob 3s ease-in-out infinite}
     @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
     .bubble-ring{position:absolute;inset:-8px;border-radius:50%;border:1.5px solid rgba(99,102,241,.3);animation:ring-pulse 2s ease-out infinite}
     @keyframes ring-pulse{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.3);opacity:0}}
 
-    /* answer stream preview */
+    /* stream preview */
     .stream-box{background:#f8f9fa;border-radius:12px;padding:14px 16px;width:260px;text-align:left}
     .stream-line{height:9px;border-radius:3px;background:#dde1e7;margin-bottom:7px}
-    .stream-line:last-child{width:55%;margin-bottom:0}
     .stream-cursor{display:inline-block;width:2px;height:12px;background:#6366f1;border-radius:1px;animation:blink .9s infinite;vertical-align:middle}
 
     /* vision preview */
@@ -158,22 +165,21 @@
     .inv-text h3{font-size:22px;font-weight:800;color:white;margin-bottom:10px;letter-spacing:-.5px}
     .inv-text p{font-size:15px;color:var(--mu2);line-height:1.7}
 
-    /* how it works */
-    .steps{display:flex;flex-direction:column;gap:24px;max-width:640px}
-    .step{display:flex;align-items:flex-start;gap:20px}
-    .step-num{width:40px;height:40px;border-radius:12px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.25);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--bl2);flex-shrink:0}
-    .step-body h4{font-size:16px;font-weight:700;color:white;margin-bottom:4px}
-    .step-body p{font-size:14px;color:var(--mu2);line-height:1.6}
-
-    /* settings card */
-    .settings-demo{background:#111118;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px;width:100%;max-width:340px}
-    .sd-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-    .sd-label{font-size:12px;color:var(--mu);font-weight:500}
-    .sd-val{font-size:12px;color:white;font-weight:600}
-    .sd-badge{padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700}
-    .sd-divider{height:1px;background:rgba(255,255,255,.05);margin:16px 0}
-    .sd-toggle{width:36px;height:20px;border-radius:10px;background:linear-gradient(90deg,#6366f1,#a855f7);position:relative;flex-shrink:0}
-    .sd-toggle::after{content:'';position:absolute;right:3px;top:3px;width:14px;height:14px;border-radius:50%;background:white}
+    /* why not chatgpt */
+    .compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto}
+    @media(max-width:800px){.compare-grid{grid-template-columns:1fr}}
+    .compare-card{border-radius:16px;padding:28px;position:relative;overflow:hidden}
+    .compare-card.bad{background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)}
+    .compare-card.good{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2)}
+    .compare-label{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:6px}
+    .compare-label.red{color:#f87171}
+    .compare-label.indigo{color:var(--bl2)}
+    .compare-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+    .compare-item:last-child{margin-bottom:0}
+    .ci-dot{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px}
+    .ci-dot.x{background:rgba(239,68,68,.15);color:#f87171}
+    .ci-dot.check{background:rgba(99,102,241,.15);color:#818cf8}
+    .ci-text{font-size:13px;color:var(--mu2);line-height:1.55}
 
     /* faq */
     .faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:4px}
@@ -214,8 +220,6 @@
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
-    .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1000px;margin:0 auto}
-    @media(max-width:800px){.how-grid{grid-template-columns:1fr;gap:48px}}
     @media(max-width:700px){
       .inv-banner{flex-direction:column;padding:32px 28px;gap:28px}
       .cost-banner{flex-direction:column;padding:28px}
@@ -241,7 +245,7 @@
   </a>
   <div class="nav-links">
     <a class="nl" href="#how">How it works</a>
-    <a class="nl" href="#features">Features</a>
+    <a class="nl" href="#why">Why Hidden AI</a>
     <a class="nl" href="#faq">FAQ</a>
     <a class="btn btn-p" href="#download">Download &mdash; Free</a>
   </div>
@@ -253,19 +257,26 @@
   <section class="hero">
     <div class="eyebrow reveal">
       <span class="edot"></span>
-      The Interview Coach Beside You
+      Windows &middot; Completely invisible
     </div>
     <h1 class="reveal">
-      Interviews are<br>
-      <span class="grad">hard. We help.</span>
+      Real-time answers.<br>
+      <span class="grad">Completely invisible.</span>
     </h1>
     <p class="hero-sub reveal">
-      Hidden AI sits silently beside you &mdash; listening, thinking, answering &mdash; while interviewers see nothing. Real-time coaching grounded in your own resume.
+      Hidden AI listens to your interview and streams answers in under a second &mdash; grounded in your resume. The interviewer sees nothing.
     </p>
+    <div class="platform-pills reveal">
+      <span class="pill">Zoom</span>
+      <span class="pill">Google Meet</span>
+      <span class="pill">Microsoft Teams</span>
+      <span class="pill">HackerRank</span>
+      <span class="pill">Any platform</span>
+    </div>
     <div class="hero-cta reveal">
       <a class="btn btn-p btn-lg" href="#download">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download for Windows
+        Download for Windows &mdash; Free
       </a>
       <a class="btn btn-g btn-lg" href="#how">See how it works</a>
     </div>
@@ -281,32 +292,31 @@
     <div class="mockup-wrap reveal" style="margin-top:72px">
       <div class="mockup-tilt">
         <div class="app-window">
-          <!-- drag bar -->
           <div class="drag-bar">
-            <div class="drag-left">
+            <div style="display:flex;align-items:center;gap:6px">
               <div class="timer-badge">00:14:32</div>
+              <div style="display:flex;align-items:center;gap:4px;padding:3px 8px;border-radius:6px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);font-size:10px;font-weight:600;color:#4ade80">
+                <span style="width:5px;height:5px;border-radius:50%;background:#4ade80"></span>Live
+              </div>
             </div>
             <div class="drag-center">Hidden AI &middot; The Interview Coach Beside You</div>
             <div class="drag-right">
-              <div class="nav-btn" style="color:#9ca3af">&#9654;</div>
-              <div class="nav-btn" style="color:#9ca3af">&#9654;&#9654;</div>
-              <div class="nav-btn" style="color:#ef4444">&#10005;</div>
+              <div class="nav-btn" style="color:#9ca3af;font-size:9px">&#9664;</div>
+              <div class="nav-btn" style="color:#9ca3af;font-size:9px">&#8962;</div>
+              <div class="nav-btn" style="color:#ef4444;font-size:9px">&#10005;</div>
             </div>
           </div>
-          <!-- header row -->
           <div class="app-header">
-            <div class="mode-badge">INTERVIEW</div>
-            <div class="model-name">claude-3-5-sonnet</div>
-            <div class="tab-select">General &#9660;</div>
+            <div class="mode-badge">&#127919; INTERVIEW</div>
+            <div class="model-name">&middot; claude-3-5-sonnet</div>
+            <div class="tab-select">Session &#9660;</div>
             <div class="vis-btn">&#128247; Vision</div>
             <div class="note-btn">Notes</div>
           </div>
-          <!-- question -->
           <div class="q-box">
             <div class="q-label">Question</div>
             <div class="q-text">Design a rate limiter that can handle 10 million requests per second across distributed nodes. Walk me through your approach.</div>
           </div>
-          <!-- answer -->
           <div style="margin:10px 14px 14px;background:#f8f9fa;border-radius:10px;padding:16px">
             <div style="height:11px;border-radius:4px;background:#dde1e7;margin-bottom:9px"></div>
             <div style="height:11px;border-radius:4px;background:#dde1e7;margin-bottom:9px;width:92%"></div>
@@ -317,7 +327,6 @@
               <div class="a-cursor"></div>
             </div>
           </div>
-          <!-- footer -->
           <div class="ttft-row">
             <div class="ttft-dot"></div>
             <div class="ttft-text">TTFT 0.41s &middot; Streaming</div>
@@ -327,135 +336,43 @@
     </div>
   </section>
 
-  <!-- APP SCREENS -->
-  <section id="screens" style="padding:80px 6%">
-    <div class="center reveal" style="margin-bottom:52px">
-      <div class="sec-label">What it looks like</div>
-      <h2>Four modes. One tool.</h2>
-      <p class="sec-sub">Hidden AI adapts to what you need &mdash; live answers, code walkthroughs, screen analysis, or practice. Toggle with <kbd style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:2px 7px;font-size:12px;font-family:monospace;color:#9ca3af">Ctrl+Shift+G</kbd></p>
-    </div>
-    <div class="grid-4">
-
-      <!-- bubble -->
-      <div class="screen-card reveal">
-        <div class="sc-preview" style="background:linear-gradient(135deg,#0d0d18,#16162a)">
-          <div class="bubble-wrap">
-            <div class="bubble-ring"></div>
-            <div class="bubble">H</div>
-          </div>
-        </div>
-        <div class="sc-info">
-          <h3>Floating Bubble</h3>
-          <p>Collapses to a 46px circle when you don&rsquo;t need it. Click to expand instantly. Sits above every window.</p>
-        </div>
-      </div>
-
-      <!-- stream -->
-      <div class="screen-card reveal">
-        <div class="sc-preview" style="background:linear-gradient(135deg,#0a0a14,#101022)">
-          <div class="stream-box">
-            <div style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px">Answer</div>
-            <div class="stream-line"></div>
-            <div class="stream-line" style="width:88%"></div>
-            <div class="stream-line" style="width:95%"></div>
-            <div class="stream-line" style="width:72%"></div>
-            <div style="display:flex;align-items:center;gap:3px">
-              <div class="stream-line" style="width:120px;margin:0"></div>
-              <div class="stream-cursor"></div>
-            </div>
-          </div>
-        </div>
-        <div class="sc-info">
-          <h3>Live Answer Stream</h3>
-          <p>Answers appear word by word in under half a second. Read at your pace, speak in your own voice.</p>
-        </div>
-      </div>
-
-      <!-- vision -->
-      <div class="screen-card reveal">
-        <div class="sc-preview" style="background:linear-gradient(135deg,#0e0a18,#18102a)">
-          <div class="vision-box">
-            <div class="vision-tag">&#128247; Vision + Code</div>
-            <div class="code-line cl-pu"></div>
-            <div class="code-line cl-bl"></div>
-            <div class="code-line cl-cy"></div>
-            <div class="code-line cl-wh"></div>
-            <div class="code-line cl-pu" style="width:50%"></div>
-            <div class="code-line cl-bl" style="width:38%"></div>
-          </div>
-        </div>
-        <div class="sc-info">
-          <h3>Vision &amp; Coding</h3>
-          <p>Take a screenshot and ask. Works on LeetCode, system design diagrams, whiteboard problems.</p>
-        </div>
-      </div>
-
-      <!-- practice -->
-      <div class="screen-card reveal">
-        <div class="sc-preview" style="background:linear-gradient(135deg,#0a0e14,#0f1a20)">
-          <div class="practice-box">
-            <div style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px">Practice Mode</div>
-            <div class="prac-bar-wrap">
-              <div class="prac-label">Clarity</div>
-              <div class="prac-bar-bg"><div class="prac-bar-fill" style="width:82%;background:linear-gradient(90deg,#6366f1,#818cf8)"></div></div>
-            </div>
-            <div class="prac-bar-wrap" style="margin-top:10px">
-              <div class="prac-label">Depth</div>
-              <div class="prac-bar-bg"><div class="prac-bar-fill" style="width:68%;background:linear-gradient(90deg,#a855f7,#c084fc)"></div></div>
-            </div>
-            <div class="prac-bar-wrap" style="margin-top:10px">
-              <div class="prac-label">Confidence</div>
-              <div class="prac-bar-bg"><div class="prac-bar-fill" style="width:91%;background:linear-gradient(90deg,#22d3ee,#67e8f9)"></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="sc-info">
-          <h3>Practice Mode</h3>
-          <p>Drill questions solo with instant feedback. Track clarity, depth, and confidence over time.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- INVISIBLE BANNER -->
-  <section style="padding:0 6% 100px">
-    <div class="inv-banner reveal">
-      <div class="inv-icon">&#128274;</div>
-      <div class="inv-text">
-        <h3>Invisible on every screen share</h3>
-        <p>Hidden AI uses a low-level Windows display flag that excludes the window from all capture pipelines &mdash; Zoom, Teams, Google Meet, OBS, even the system screenshot shortcut. The interviewer&rsquo;s screen share shows your IDE and browser. Nothing else.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- HOW IT WORKS -->
   <section id="how" style="padding:80px 6% 100px">
     <div class="how-grid">
       <div class="reveal">
         <div class="sec-label">How it works</div>
-        <h2 style="margin-bottom:32px">Set up in 3 minutes</h2>
+        <h2 style="margin-bottom:32px">Up and running in 3 minutes</h2>
         <div class="steps">
           <div class="step">
             <div class="step-num">1</div>
             <div class="step-body">
               <h4>Paste your resume</h4>
-              <p>Drop your resume text into settings. Hidden AI grounds every answer in your real experience &mdash; no hallucinated tech stacks.</p>
+              <p>Drop your resume text into settings. Every answer Hidden AI generates is grounded in your actual experience &mdash; no hallucinated tech stacks or fake projects.</p>
             </div>
           </div>
           <div class="step">
             <div class="step-num">2</div>
             <div class="step-body">
               <h4>Add an API key</h4>
-              <p>Paste a key from OpenRouter, OpenAI, or Anthropic. You pay the provider directly &mdash; Hidden AI takes nothing.</p>
+              <p>Connect OpenRouter, OpenAI, Google, or Anthropic. You pay the model provider directly &mdash; Hidden AI takes nothing. A $5 balance covers dozens of interviews.</p>
             </div>
           </div>
           <div class="step">
             <div class="step-num">3</div>
             <div class="step-body">
               <h4>Start your interview</h4>
-              <p>Hidden AI listens automatically. When a question comes in, answers stream in under a second &mdash; read, speak, move on.</p>
+              <p>Hidden AI listens automatically. When a question comes in, answers stream in under a second. Read, speak in your own words, move on.</p>
             </div>
+          </div>
+        </div>
+        <div style="margin-top:32px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <kbd style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 10px;font-size:11px;font-family:monospace;color:#9ca3af">Ctrl + Shift + G</kbd>
+            <span style="font-size:13px;color:var(--mu2)">Toggle bubble / expand</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <kbd style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 10px;font-size:11px;font-family:monospace;color:#9ca3af">Ctrl + B</kbd>
+            <span style="font-size:13px;color:var(--mu2)">Hide window instantly (stealth)</span>
           </div>
         </div>
       </div>
@@ -480,16 +397,196 @@
             <div class="sd-toggle"></div>
           </div>
           <div class="sd-row" style="margin-top:12px">
-            <span class="sd-label">Hide window</span>
-            <span class="sd-badge" style="background:rgba(255,255,255,.06);color:#9ca3af;border:1px solid rgba(255,255,255,.1);font-family:monospace">Ctrl+B</span>
+            <span class="sd-label">Resume</span>
+            <span style="font-size:11px;color:#4ade80;font-weight:600">&#10003; 847 words</span>
           </div>
           <div class="sd-divider"></div>
           <div class="sd-row">
             <span class="sd-label">Toggle bubble</span>
             <span class="sd-badge" style="background:rgba(255,255,255,.06);color:#9ca3af;border:1px solid rgba(255,255,255,.1);font-family:monospace">Ctrl+Shift+G</span>
           </div>
+          <div class="sd-row" style="margin-top:12px">
+            <span class="sd-label">Hide window</span>
+            <span class="sd-badge" style="background:rgba(255,255,255,.06);color:#9ca3af;border:1px solid rgba(255,255,255,.1);font-family:monospace">Ctrl+B</span>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- APP MODES -->
+  <section id="screens" style="padding:80px 6%">
+    <div class="center reveal" style="margin-bottom:52px">
+      <div class="sec-label">What it looks like</div>
+      <h2>Four modes. One tool.</h2>
+      <p class="sec-sub">Collapses to a 46px bubble when idle. Expands instantly when you need it. Invisible to every screen share.</p>
+    </div>
+    <div class="grid-4">
+
+      <div class="screen-card reveal">
+        <div class="sc-preview" style="background:linear-gradient(135deg,#0d0d18,#16162a)">
+          <div class="bubble-wrap">
+            <div class="bubble-ring"></div>
+            <div class="bubble">H</div>
+          </div>
+        </div>
+        <div class="sc-info">
+          <h3>Floating Bubble</h3>
+          <p>Collapses to a 46px circle. Sits above every window. Drag it anywhere. Click to expand.</p>
+        </div>
+      </div>
+
+      <div class="screen-card reveal">
+        <div class="sc-preview" style="background:linear-gradient(135deg,#0a0a14,#101022)">
+          <div class="stream-box">
+            <div style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px">Answer</div>
+            <div class="stream-line"></div>
+            <div class="stream-line" style="width:88%"></div>
+            <div class="stream-line" style="width:95%"></div>
+            <div class="stream-line" style="width:72%"></div>
+            <div style="display:flex;align-items:center;gap:3px">
+              <div class="stream-line" style="width:120px;margin:0"></div>
+              <div class="stream-cursor"></div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-info">
+          <h3>Live Answer Stream</h3>
+          <p>Answers appear word by word in under half a second. Read at your pace, speak in your own voice.</p>
+        </div>
+      </div>
+
+      <div class="screen-card reveal">
+        <div class="sc-preview" style="background:linear-gradient(135deg,#0e0a18,#18102a)">
+          <div class="vision-box">
+            <div class="vision-tag">&#128247; Vision + Code</div>
+            <div class="code-line cl-pu"></div>
+            <div class="code-line cl-bl"></div>
+            <div class="code-line cl-cy"></div>
+            <div class="code-line cl-wh"></div>
+            <div class="code-line cl-pu" style="width:50%"></div>
+            <div class="code-line cl-bl" style="width:38%"></div>
+          </div>
+        </div>
+        <div class="sc-info">
+          <h3>Vision &amp; Coding</h3>
+          <p>Screenshot any content &mdash; LeetCode, HackerRank, diagrams &mdash; and get a full solution walkthrough.</p>
+        </div>
+      </div>
+
+      <div class="screen-card reveal">
+        <div class="sc-preview" style="background:linear-gradient(135deg,#0a0e14,#0f1a20)">
+          <div class="practice-box">
+            <div style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px">Practice Mode</div>
+            <div class="prac-bar-wrap">
+              <div class="prac-label">Clarity</div>
+              <div class="prac-bar-bg"><div class="prac-bar-fill" style="width:82%;background:linear-gradient(90deg,#6366f1,#818cf8)"></div></div>
+            </div>
+            <div class="prac-bar-wrap" style="margin-top:10px">
+              <div class="prac-label">Depth</div>
+              <div class="prac-bar-bg"><div class="prac-bar-fill" style="width:68%;background:linear-gradient(90deg,#a855f7,#c084fc)"></div></div>
+            </div>
+            <div class="prac-bar-wrap" style="margin-top:10px">
+              <div class="prac-label">Confidence</div>
+              <div class="prac-bar-bg"><div class="prac-bar-fill" style="width:91%;background:linear-gradient(90deg,#22d3ee,#67e8f9)"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="sc-info">
+          <h3>Practice Mode</h3>
+          <p>Drill questions solo before the real thing. Track clarity, depth, and confidence over time.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INVISIBLE BANNER -->
+  <section style="padding:0 6% 100px">
+    <div class="inv-banner reveal">
+      <div class="inv-icon">&#128274;</div>
+      <div class="inv-text">
+        <h3>Invisible on every screen share</h3>
+        <p>Hidden AI uses a low-level Windows display flag that removes the window from every capture pipeline before any image is composed. Your screen share shows your IDE and browser. Nothing else. Works on Zoom, Teams, Google Meet, OBS &mdash; anything that uses standard display APIs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY NOT CHATGPT -->
+  <section id="why" style="padding:80px 6% 100px">
+    <div class="center reveal" style="margin-bottom:52px">
+      <div class="sec-label">Why not just use ChatGPT?</div>
+      <h2>ChatGPT can&rsquo;t do this.</h2>
+      <p class="sec-sub">Opening ChatGPT in a browser tab during a screen-shared interview is visible to the interviewer. Hidden AI is built specifically for this.</p>
+    </div>
+    <div class="compare-grid">
+
+      <div class="compare-card bad reveal">
+        <div class="compare-label red">
+          <span>&#10005;</span> ChatGPT / Browser tab
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot x">&#10005;</div>
+          <div class="ci-text">Visible in screen share &mdash; your tab shows up for the interviewer</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot x">&#10005;</div>
+          <div class="ci-text">Doesn&rsquo;t know your resume &mdash; gives generic answers unrelated to your experience</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot x">&#10005;</div>
+          <div class="ci-text">You have to manually type or paste every question</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot x">&#10005;</div>
+          <div class="ci-text">Alt-Tab to browser mid-interview is obvious and risky</div>
+        </div>
+      </div>
+
+      <div class="compare-card bad reveal">
+        <div class="compare-label red">
+          <span>&#10005;</span> Paid interview tools ($50&ndash;$100/mo)
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot x">&#10005;</div>
+          <div class="ci-text">Monthly subscription whether you interview or not</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot x">&#10005;</div>
+          <div class="ci-text">Locked into their model &mdash; can&rsquo;t switch to a better or cheaper one</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot x">&#10005;</div>
+          <div class="ci-text">Your resume and questions stored on their servers</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot x">&#10005;</div>
+          <div class="ci-text">Expensive just to try &mdash; credit card required</div>
+        </div>
+      </div>
+
+      <div class="compare-card good reveal">
+        <div class="compare-label indigo">
+          <span>&#10003;</span> Hidden AI
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot check">&#10003;</div>
+          <div class="ci-text">Excluded from screen capture at the OS level &mdash; completely invisible</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot check">&#10003;</div>
+          <div class="ci-text">Grounded in your resume &mdash; answers reference your actual projects and experience</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot check">&#10003;</div>
+          <div class="ci-text">Listens automatically &mdash; no copy-pasting, no switching windows</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-dot check">&#10003;</div>
+          <div class="ci-text">Free to download, pay pennies per interview with your own API key</div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -504,37 +601,37 @@
       <div class="card reveal">
         <div class="card-icon" style="background:rgba(99,102,241,.12)">&#127908;</div>
         <h3>Real-time transcription</h3>
-        <p>Microphone listens continuously. Questions are captured and sent to the model the moment they&rsquo;re spoken.</p>
+        <p>Listens to the interviewer via your audio device. Questions are captured and sent the moment they&rsquo;re spoken &mdash; no manual input.</p>
       </div>
 
       <div class="card reveal">
         <div class="card-icon" style="background:rgba(74,222,128,.1)">&#9889;</div>
         <h3>Sub-second responses</h3>
-        <p>First token in under 0.5s on fast models. Answer streams while the interviewer is still finishing the question.</p>
+        <p>First token arrives in under 0.5s on fast models. The answer is streaming before the interviewer finishes asking.</p>
       </div>
 
       <div class="card reveal">
         <div class="card-icon" style="background:rgba(168,85,247,.12)">&#128274;</div>
-        <h3>Capture-proof window</h3>
-        <p>The window is excluded from all screen capture at the OS level &mdash; completely invisible to every meeting platform.</p>
+        <h3>OS-level invisibility</h3>
+        <p>The window is excluded from all screen capture before any frame is composed &mdash; invisible on Zoom, Teams, Meet, OBS, even PrintScreen.</p>
       </div>
 
       <div class="card reveal">
         <div class="card-icon" style="background:rgba(34,211,238,.1)">&#128247;</div>
         <h3>Vision mode</h3>
-        <p>Screenshot any visible content &mdash; code editors, diagrams, problem statements &mdash; and ask about it directly.</p>
+        <p>Screenshot a LeetCode problem, whiteboard diagram, or code editor and ask about it. Works for any on-screen content.</p>
       </div>
 
       <div class="card reveal">
         <div class="card-icon" style="background:rgba(251,191,36,.1)">&#127775;</div>
-        <h3>Your choice of model</h3>
-        <p>GPT-4o, Claude 3.5, Gemini, Llama &mdash; swap models mid-interview. Your key, your cost, your control.</p>
+        <h3>Any model, any time</h3>
+        <p>GPT-4o, Claude 3.5, Gemini Flash, Llama &mdash; switch models mid-interview. Your key, your cost, your choice.</p>
       </div>
 
       <div class="card reveal">
         <div class="card-icon" style="background:rgba(239,68,68,.1)">&#128203;</div>
         <h3>Resume-grounded answers</h3>
-        <p>Paste your resume once. Every answer references your actual projects and tech stack, not generic talking points.</p>
+        <p>Paste your resume once. Every answer references your actual tech stack and projects &mdash; not generic talking points.</p>
       </div>
 
     </div>
@@ -555,7 +652,19 @@
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            No. Hidden AI uses a low-level display flag that removes the window from every capture pipeline before any image is composed. Your screen share shows exactly what you intend &mdash; your IDE, browser, or terminal. The Hidden AI window is not part of the captured frame at all. This works on Zoom, Teams, Google Meet, and any other tool that uses standard display APIs.
+            No. Hidden AI uses a low-level display flag that removes the window from every capture pipeline before any image is composed. Your screen share shows exactly what you intend &mdash; your IDE, browser, or terminal. The Hidden AI window is not part of the captured frame at all. This works on Zoom, Teams, Google Meet, and any tool that uses standard display APIs.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Why not just use ChatGPT during the interview?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            A browser tab with ChatGPT is visible when you screen share &mdash; interviewers can see it in your taskbar and in the shared screen if you switch windows. Hidden AI runs as a protected window that is excluded from capture at the OS level. It also listens automatically so you never have to alt-tab or type &mdash; and every answer is grounded in your resume, not a generic response.
           </div>
         </div>
       </div>
@@ -567,7 +676,7 @@
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            Hidden AI itself is free to download and use. You pay only for AI model usage &mdash; billed directly by the provider you connect (OpenRouter, OpenAI, or Anthropic). A real interview typically costs $0.10&ndash;$0.50 depending on the model. With OpenRouter you can access dozens of models on a single $5&ndash;$10 balance, which covers many sessions.
+            Hidden AI itself is free to download and use. You pay only for AI model usage &mdash; billed directly by the provider you connect (OpenRouter, OpenAI, or Anthropic). A real interview typically costs $0.10&ndash;$0.50 depending on the model. With OpenRouter you can access dozens of models on a single $5&ndash;$10 balance.
           </div>
         </div>
       </div>
@@ -579,19 +688,19 @@
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            Any model available through OpenRouter, OpenAI, or Anthropic &mdash; including GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, Mistral, Llama 3, and more. OpenRouter lets you access all of them with one API key and one balance. You can switch models between questions without restarting.
+            Any model available through OpenRouter, OpenAI, Google, or Anthropic &mdash; including GPT-4o, Claude 3.5 Sonnet, Gemini 2.5 Flash, Llama 3, and more. OpenRouter lets you access all of them with one API key. You can switch models between questions without restarting.
           </div>
         </div>
       </div>
 
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Does it work for coding interviews?
+          Does it work for coding interviews on HackerRank?
           <div class="faq-icon">+</div>
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            Yes. Use Vision mode to screenshot a LeetCode or HackerRank problem and get a full solution walkthrough. Hidden AI can explain the approach, walk through time and space complexity, and suggest optimizations &mdash; all streamed live while you&rsquo;re thinking through it.
+            Yes. Use Vision mode to screenshot the problem and get a full walkthrough &mdash; approach, time complexity, edge cases. Hidden AI runs as a separate window excluded from capture, so HackerRank&rsquo;s browser-based proctoring does not detect it.
           </div>
         </div>
       </div>
@@ -603,19 +712,7 @@
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            Your resume is stored locally on your machine and sent only to the AI provider you configured &mdash; the same provider you&rsquo;re already trusting with your questions. Hidden AI has no backend, no account system, and does not store or transmit your data anywhere else.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Which platforms does it support?
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            Windows only right now. The invisibility feature relies on a Windows-specific display API. Mac support is planned &mdash; the architecture is different there and we want to get it right before releasing it.
+            Your resume is stored locally on your machine and sent only to the AI provider you configured. Hidden AI has no backend, no account system, and does not store or transmit your data anywhere.
           </div>
         </div>
       </div>
@@ -628,7 +725,7 @@
     <div class="cost-banner reveal">
       <div class="cost-left">
         <h3>Stop paying $50&ndash;$100/month for interview tools</h3>
-        <p>Most AI interview tools charge a subscription and lock you into their models. Hidden AI uses your own API key &mdash; you pay the provider directly, only for what you use. A full interview session typically costs less than a cup of coffee.</p>
+        <p>Most AI interview tools charge a subscription and lock you into their models. Hidden AI uses your own API key &mdash; you pay the provider directly, only for what you use. A full interview session costs less than a cup of coffee.</p>
       </div>
       <div class="cost-right">
         <div class="cost-num">$0</div>
@@ -660,24 +757,22 @@
 </main>
 
 <footer>
-  <div class="foot-l">Built by Jay &middot; The Interview Coach Beside You</div>
+  <div class="foot-l">Hidden AI &mdash; Built by Jay &middot; The Interview Coach Beside You</div>
   <div class="foot-r">
-    <a href="#faq">FAQ</a>
     <a href="#how">How it works</a>
+    <a href="#why">Why Hidden AI</a>
+    <a href="#faq">FAQ</a>
     <a href="#download">Download</a>
   </div>
 </footer>
 
 <script>
-  // FAQ toggle
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
     const wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
   }
-
-  // Scroll reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
