@@ -280,8 +280,35 @@
     .w3{animation:w3 8s linear infinite}
     .w4{animation:w4 8s linear infinite}
 
-    @keyframes show-cursor{0%,37%{opacity:0}41%,83%{opacity:1}88%,100%{opacity:0}}
+    @keyframes w5{0%,71%{opacity:0}75%,87%{opacity:1}92%,100%{opacity:0}}
+    .w5{opacity:0;animation:w5 8s linear infinite}
+
+    @keyframes show-cursor{0%,37%{opacity:0}41%,87%{opacity:1}92%,100%{opacity:0}}
     .anim-cursor-wrap{animation:show-cursor 8s linear infinite}
+
+    /* Answer panel header states */
+    @keyframes show-genbadge{0%,38%{opacity:0}42%,74%{opacity:1}78%,100%{opacity:0}}
+    @keyframes show-donebadge{0%,75%{opacity:0}79%,87%{opacity:1}92%,100%{opacity:0}}
+    @keyframes show-ansactions{0%,75%{opacity:0}79%,87%{opacity:1}92%,100%{opacity:0}}
+    @keyframes show-ansempty{0%,10%{opacity:1}15%,100%{opacity:0}}
+    @keyframes show-ansbody{0%,38%{opacity:0}42%,87%{opacity:1}92%,100%{opacity:0}}
+    .gen-badge{opacity:0;animation:show-genbadge 8s linear infinite}
+    .done-badge{opacity:0;animation:show-donebadge 8s linear infinite}
+    .ans-actions{opacity:0;animation:show-ansactions 8s linear infinite}
+    .ans-empty{animation:show-ansempty 8s linear infinite}
+    .ans-body{opacity:0;animation:show-ansbody 8s linear infinite}
+
+    /* Question box label states */
+    @keyframes show-qlisten{0%,10%{opacity:1}14%,100%{opacity:0}}
+    @keyframes show-qidle{0%,11%{opacity:0}15%,100%{opacity:1}}
+    @keyframes show-qdotlisten{0%,10%{opacity:1}14%,100%{opacity:0}}
+    @keyframes show-qdotidle{0%,11%{opacity:0}15%,100%{opacity:1}}
+    @keyframes show-qwcount{0%,12%{opacity:0}16%,100%{opacity:1}}
+    .qdot-listen{animation:show-qdotlisten 8s linear infinite}
+    .qdot-idle{opacity:0;animation:show-qdotidle 8s linear infinite}
+    .qlabel-listen{animation:show-qlisten 8s linear infinite}
+    .qlabel-idle{opacity:0;animation:show-qidle 8s linear infinite}
+    .qw-count{opacity:0;animation:show-qwcount 8s linear infinite}
 
     @media(max-width:800px){
       .screens-r1,.screens-r2{grid-template-columns:1fr !important}
@@ -399,31 +426,75 @@
               <div style="padding:3px 8px;border-radius:6px;font-size:11px;background:rgba(255,255,255,.04);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.06)">&#128247;</div>
             </div>
           </div>
-          <div class="q-box" style="min-height:72px">
-            <!-- Phase A: Listening -->
-            <div class="q-blank-state">
-              <span style="width:7px;height:7px;border-radius:50%;background:#f87171;display:inline-block;animation:pulse 1.2s infinite"></span>
-              Listening to audio&hellip;
+          <!-- ── ANSWER PANEL (top, white) ── -->
+          <div style="margin:10px 12px 6px;background:white;border-radius:10px;border:1px solid #e5e7eb;min-height:118px;overflow:hidden">
+            <!-- Sticky header -->
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 12px;border-bottom:1px solid #f3f4f6;background:rgba(255,255,255,.97)">
+              <div style="display:flex;align-items:center;gap:7px">
+                <span style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1.4px;color:#0ea5e9">Answer</span>
+                <!-- Generating (phases C-D) -->
+                <span class="gen-badge" style="display:flex;align-items:center;gap:3px;font-size:9px;color:#9ca3af">
+                  <span style="width:5px;height:5px;border-radius:50%;background:#38bdf8;animation:pulse 1s infinite;display:inline-block"></span>Generating
+                </span>
+                <!-- Word count (phase E) -->
+                <span class="done-badge" style="font-size:9px;color:#9ca3af">52w &middot; ~24s</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:5px">
+                <div style="display:flex;align-items:center;gap:1px;background:#f3f4f6;border-radius:5px;padding:2px 5px">
+                  <span style="width:14px;height:14px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9ca3af">&#8722;</span>
+                  <span style="font-size:9px;color:#6b7280;width:26px;text-align:center">100%</span>
+                  <span style="width:14px;height:14px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9ca3af">+</span>
+                </div>
+                <!-- Action buttons (phase E) -->
+                <span class="ans-actions" style="display:flex;align-items:center;gap:3px">
+                  <span style="font-size:9px;color:#0ea5e9;border:1px solid #d1d5db;border-radius:4px;padding:1px 6px">Retry</span>
+                  <span style="font-size:9px;color:#0ea5e9;border:1px solid #d1d5db;border-radius:4px;padding:1px 6px">Copy</span>
+                  <span style="font-size:9px;color:#6b7280;border:1px solid #d1d5db;border-radius:4px;padding:1px 6px">Clear</span>
+                </span>
+              </div>
             </div>
-            <!-- Phase B: Question detected -->
-            <div class="q-detected">
-              <div style="font-size:10px;font-weight:800;color:#38bdf8;letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px">Interviewer question detected:</div>
-              <div class="q-text">&ldquo;Design a rate limiter that handles 10M&nbsp;req/s across distributed nodes.&rdquo;</div>
+            <!-- Empty state (phases A-B) -->
+            <div class="ans-empty" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;gap:6px">
+              <div style="width:28px;height:28px;border-radius:50%;background:#f0f9ff;display:flex;align-items:center;justify-content:center">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              </div>
+              <span style="font-size:11px;color:#9ca3af;font-weight:500">Waiting for a question&hellip;</span>
+            </div>
+            <!-- Answer text streaming in (phases D-E) -->
+            <div class="ans-body" style="padding:12px 16px">
+              <p style="font-size:12.5px;color:#111827;line-height:1.8;margin:0">
+                <span class="w w0">At Cargill, our <span style="color:#0284c7;font-weight:600">Kafka</span> pipeline fell behind during peak season&mdash;</span><span class="w w1">ingesting 2M events/hour through a single-threaded consumer. </span><span class="w w2">I profiled the bottleneck, increased partitions from 8&rarr;32, </span><span class="w w3">and deployed 4 parallel consumers with a <span style="color:#0284c7;font-weight:600">Redis</span> cache layer </span><span class="w w4">for hot lookup keys. Throughput jumped to 14M events/hour </span><span class="w w5">within 48 hours&mdash;zero downtime, zero data loss.</span><span class="anim-cursor-wrap" style="display:inline"><span class="a-cursor" style="background:#38bdf8;margin-left:2px"></span></span>
+              </p>
             </div>
           </div>
-          <!-- Phase D: Answer panel — real text, word-by-word -->
-          <div style="margin:10px 14px 14px;background:#f8f9fa;border-radius:10px;padding:14px 16px;border-left:3px solid rgba(99,102,241,.5);min-height:78px">
-            <div class="ans-label" style="font-size:11px;font-weight:700;color:#6366f1;margin-bottom:7px;font-family:monospace">Suggested Answer:</div>
-            <div style="font-size:12px;color:#374151;line-height:1.8;font-family:monospace">
-              <span class="w w0">Use a token bucket per node. </span><span class="w w1">Sync counters in Redis </span><span class="w w2">with atomic Lua scripts. </span><span class="w w3">Apply consistent hashing </span><span class="w w4">to distribute load evenly.<span class="anim-cursor-wrap" style="display:inline"><span class="a-cursor" style="background:#6366f1"></span></span></span>
+
+          <!-- ── QUESTION BOX (bottom, dark) ── -->
+          <div style="margin:0 12px 10px;background:#111111;border-radius:10px;border:1px solid #242728">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 12px 3px">
+              <div style="display:flex;align-items:center;gap:5px">
+                <!-- Red dot when listening, gray when idle -->
+                <span class="qdot-listen" style="width:5px;height:5px;border-radius:50%;background:#f87171;display:inline-block;animation:pulse 1s infinite"></span>
+                <span class="qdot-idle" style="width:5px;height:5px;border-radius:50%;background:#3f3f46;display:inline-block"></span>
+                <span class="qlabel-listen" style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#f87171">Listening&hellip;</span>
+                <span class="qlabel-idle" style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#71717a">Question</span>
+              </div>
+              <span class="qw-count" style="font-size:9px;color:#3f3f46">13w</span>
             </div>
+            <!-- Transcript text -->
+            <div style="padding:3px 12px 6px">
+              <div class="q-blank-state" style="font-size:11px;font-style:italic;color:#4b5563">Waiting for question&hellip;</div>
+              <div class="q-detected" style="font-size:11.5px;color:#c9cdd4;line-height:1.6">Tell me about a time you had to scale a data pipeline under tight deadlines.</div>
+            </div>
+            <p style="font-size:9px;text-align:center;padding-bottom:5px;color:#3f3f46">Click to edit &middot; Enter to resubmit</p>
           </div>
-          <div class="ttft-row" style="position:relative;min-height:28px;overflow:hidden">
-            <div class="ttft-listen">
+
+          <!-- TTFT row -->
+          <div class="ttft-row" style="position:relative;min-height:26px;overflow:hidden">
+            <div class="ttft-listen" style="display:flex;align-items:center;gap:8px;position:absolute">
               <div class="ttft-dot anim-live"></div>
               <div class="ttft-text">Listening&hellip;</div>
             </div>
-            <div class="ttft-stream">
+            <div class="ttft-stream" style="display:flex;align-items:center;gap:8px;position:absolute">
               <div style="width:6px;height:6px;border-radius:50%;background:#818cf8;animation:pulse 1.2s infinite"></div>
               <div class="ttft-text">TTFT 0.41s &middot; Streaming</div>
             </div>
