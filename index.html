@@ -79,25 +79,8 @@
     .laptop-trackpad{position:absolute;width:130px;height:20px;border-radius:5px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);top:50%;left:50%;transform:translate(-50%,-40%)}
     /* Bottom glow */
     .laptop-glow{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);width:70%;height:80px;background:radial-gradient(ellipse at center,rgba(99,102,241,.4) 0%,transparent 70%);pointer-events:none;filter:blur(24px)}
-    /* Windows desktop inside laptop */
-    .desktop-bg{background:linear-gradient(135deg,#060a14 0%,#0c1228 45%,#080a18 100%);display:flex;flex-direction:column;min-height:320px;position:relative}
-    /* subtle wallpaper orbs */
-    .desktop-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(99,102,241,.12) 0%,transparent 60%),radial-gradient(ellipse at 75% 60%,rgba(168,85,247,.08) 0%,transparent 50%);pointer-events:none}
-    .desktop-area{flex:1;display:flex;align-items:center;justify-content:center;padding:18px 24px 12px;position:relative;z-index:1}
-    /* App window floating on desktop */
-    .app-window{overflow:hidden;background:#0d0d14;border-radius:10px;border:1px solid rgba(255,255,255,.1);box-shadow:0 12px 48px rgba(0,0,0,.7),0 2px 8px rgba(0,0,0,.5),0 0 0 .5px rgba(255,255,255,.05);width:100%}
-    /* Windows 11 taskbar */
-    .win-taskbar{height:34px;background:rgba(8,8,16,.9);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;padding:0 14px;gap:6px;flex-shrink:0;position:relative;z-index:1}
-    .win-start{width:26px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:default}
-    .win-search{height:22px;width:140px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07);border-radius:4px;display:flex;align-items:center;padding:0 8px;gap:5px;font-size:9.5px;color:rgba(255,255,255,.35)}
-    .win-pinned{height:26px;padding:0 10px;background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.25);border-radius:4px;display:flex;align-items:center;gap:5px;font-size:10px;color:rgba(255,255,255,.65);font-weight:500}
-    .win-tray{margin-left:auto;display:flex;align-items:center;gap:14px;font-size:9.5px;color:rgba(255,255,255,.4);font-family:monospace}
-    .win-tray-icons{display:flex;align-items:center;gap:8px}
-    /* Win min/max/close controls in drag bar */
-    .win-controls{display:flex;align-items:stretch;margin-left:6px;border-left:1px solid rgba(255,255,255,.06);height:100%}
-    .wc{width:30px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,.55);cursor:default;transition:background .12s,color .12s}
-    .wc:hover{background:rgba(255,255,255,.09);color:white}
-    .wc-x:hover{background:#c42b1c !important;color:white}
+    /* App window inside laptop (no own border-radius) */
+    .app-window{overflow:hidden;background:#0d0d14}
     /* Keep old class for compat */
     .mockup-wrap{display:none}
     .drag-bar{height:44px;background:linear-gradient(90deg,#111118,#16161f);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;padding:0 14px;gap:10px}
@@ -377,8 +360,6 @@
         <div class="laptop-screen">
           <div class="laptop-cam"></div>
           <div class="laptop-display">
-            <div class="desktop-bg">
-              <div class="desktop-area">
         <div class="app-window">
           <div class="drag-bar">
             <div style="display:flex;align-items:center;gap:6px">
@@ -397,12 +378,6 @@
               <!-- collapse btn: round, sky-400 border, lightbulb -->
               <div style="width:24px;height:24px;border-radius:50%;background:#111827;border:1px solid rgba(56,189,248,.4);display:flex;align-items:center;justify-content:center">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-              </div>
-              <!-- Windows controls -->
-              <div class="win-controls">
-                <div class="wc">&#8211;</div>
-                <div class="wc">&#9633;</div>
-                <div class="wc wc-x">&#10005;</div>
               </div>
             </div>
           </div>
@@ -454,31 +429,6 @@
             </div>
           </div>
         </div>
-              </div><!-- /desktop-area -->
-              <!-- Windows 11 taskbar -->
-              <div class="win-taskbar">
-                <div class="win-start">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="9" height="9" rx="1" fill="rgba(255,255,255,.55)"/><rect x="13" y="2" width="9" height="9" rx="1" fill="rgba(255,255,255,.55)"/><rect x="2" y="13" width="9" height="9" rx="1" fill="rgba(255,255,255,.55)"/><rect x="13" y="13" width="9" height="9" rx="1" fill="rgba(255,255,255,.55)"/></svg>
-                </div>
-                <div class="win-search">
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                  Search
-                </div>
-                <div style="width:1px;height:18px;background:rgba(255,255,255,.06);margin:0 4px"></div>
-                <div class="win-pinned">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                  Hidden AI
-                </div>
-                <div class="win-tray">
-                  <div class="win-tray-icons">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 6l11 7 11-7M1 6v12h22V6"/></svg>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.56 2.9A7 7 0 0119 9v4l2 2H3l2-2V9a7 7 0 011.56-4.32"/><path d="M12 22a2 2 0 002-2h-4a2 2 0 002 2z"/></svg>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M23 13V9a2 2 0 00-2-2h-3"/></svg>
-                  </div>
-                  <span>11:24 AM</span>
-                </div>
-              </div>
-            </div><!-- /desktop-bg -->
           </div><!-- /laptop-display -->
         </div><!-- /laptop-screen -->
         <div class="laptop-hinge"></div>
