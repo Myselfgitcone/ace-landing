@@ -6,21 +6,26 @@
   <title>Ace — The Interview Coach Beside You</title>
   <meta name="description" content="Ace is a silent AI interview coach that sits beside you during interviews. Real-time answers grounded in your resume. Invisible to screen share." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #07080c;
-      --bg2:       #0d0f14;
-      --bg3:       #12141a;
-      --border:    rgba(255,255,255,0.07);
-      --text:      #e8eaf0;
-      --muted:     #6b7280;
-      --accent:    #ec4899;
-      --accent2:   #f472b6;
-      --blue:      #60a5fa;
-      --glow:      rgba(236,72,153,0.15);
+      --bg:      #050507;
+      --bg2:     #0a0a0f;
+      --bg3:     #0f0f18;
+      --card:    rgba(255,255,255,0.03);
+      --border:  rgba(255,255,255,0.06);
+      --border2: rgba(255,255,255,0.1);
+      --text:    #f0f0f8;
+      --muted:   #6b7280;
+      --muted2:  #9ca3af;
+      --blue:    #6366f1;
+      --blue2:   #818cf8;
+      --cyan:    #22d3ee;
+      --purple:  #a855f7;
+      --glow-b:  rgba(99,102,241,0.2);
+      --glow-p:  rgba(168,85,247,0.15);
     }
 
     html { scroll-behavior: smooth; }
@@ -32,61 +37,129 @@
       font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
+
+    /* ── Background orbs ── */
+    .bg-orbs {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+    }
+    .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(120px); opacity: 0.35;
+    }
+    .orb1 {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, #6366f1, transparent);
+      top: -200px; left: -200px;
+      animation: orbFloat1 20s ease-in-out infinite;
+    }
+    .orb2 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #a855f7, transparent);
+      top: 30%; right: -200px;
+      animation: orbFloat2 25s ease-in-out infinite;
+    }
+    .orb3 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #22d3ee, transparent);
+      bottom: -100px; left: 30%;
+      animation: orbFloat3 18s ease-in-out infinite;
+      opacity: 0.2;
+    }
+
+    @keyframes orbFloat1 {
+      0%, 100% { transform: translate(0, 0); }
+      50%       { transform: translate(80px, 60px); }
+    }
+    @keyframes orbFloat2 {
+      0%, 100% { transform: translate(0, 0); }
+      50%       { transform: translate(-60px, 80px); }
+    }
+    @keyframes orbFloat3 {
+      0%, 100% { transform: translate(0, 0); }
+      50%       { transform: translate(40px, -50px); }
+    }
+
+    /* Grid overlay */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* All content above orbs */
+    nav, main, footer { position: relative; z-index: 1; }
 
     /* ── Nav ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%;
-      height: 60px;
-      background: rgba(7,8,12,0.85);
-      backdrop-filter: blur(16px);
+      padding: 0 6%;
+      height: 64px;
+      background: rgba(5,5,7,0.7);
+      backdrop-filter: blur(24px) saturate(1.5);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
       display: flex; align-items: center; gap: 10px;
-      font-weight: 700; font-size: 18px; letter-spacing: -0.3px;
+      font-weight: 800; font-size: 18px; letter-spacing: -0.5px;
       color: white; text-decoration: none;
     }
 
-    .nav-logo svg { flex-shrink: 0; }
+    .logo-icon {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 20px rgba(99,102,241,0.4);
+    }
 
-    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
 
     .nav-link {
-      color: var(--muted); font-size: 14px; font-weight: 500;
+      color: var(--muted2); font-size: 14px; font-weight: 500;
       text-decoration: none; transition: color 0.2s;
     }
-    .nav-link:hover { color: var(--text); }
+    .nav-link:hover { color: white; }
+
+    .nav-right { display: flex; align-items: center; gap: 12px; }
 
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 10px 22px; border-radius: 10px;
       font-size: 14px; font-weight: 600; cursor: pointer;
       text-decoration: none; transition: all 0.2s; border: none;
+      font-family: inherit;
     }
 
     .btn-primary {
-      background: var(--accent);
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
       color: white;
-      box-shadow: 0 0 24px rgba(236,72,153,0.35);
+      box-shadow: 0 0 0 1px rgba(99,102,241,0.3), 0 4px 24px rgba(99,102,241,0.3);
     }
     .btn-primary:hover {
-      background: var(--accent2);
-      box-shadow: 0 0 36px rgba(236,72,153,0.5);
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      box-shadow: 0 0 0 1px rgba(99,102,241,0.5), 0 8px 32px rgba(99,102,241,0.45);
       transform: translateY(-1px);
     }
 
     .btn-ghost {
-      background: rgba(255,255,255,0.06);
-      color: var(--text);
-      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--muted2);
+      border: 1px solid var(--border2);
     }
     .btn-ghost:hover {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.07);
+      color: white;
       transform: translateY(-1px);
+    }
+
+    .btn-large {
+      padding: 14px 32px; font-size: 15px; border-radius: 12px;
     }
 
     /* ── Hero ── */
@@ -95,126 +168,215 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center;
-      padding: 120px 5% 80px;
-      position: relative;
-      overflow: hidden;
+      padding: 140px 6% 80px;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 800px; height: 500px;
-      background: radial-gradient(ellipse at center top, rgba(236,72,153,0.12) 0%, transparent 70%);
-      pointer-events: none;
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 100px;
+      border: 1px solid rgba(99,102,241,0.3);
+      background: rgba(99,102,241,0.08);
+      font-size: 12px; font-weight: 600; color: var(--blue2);
+      letter-spacing: 0.5px; text-transform: uppercase;
+      margin-bottom: 32px;
     }
 
-    .badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 14px; border-radius: 100px;
-      border: 1px solid rgba(236,72,153,0.3);
-      background: rgba(236,72,153,0.08);
-      font-size: 12px; font-weight: 500; color: var(--accent2);
-      margin-bottom: 28px;
-    }
-
-    .badge-dot {
+    .eyebrow-dot {
       width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent); animation: pulse 2s infinite;
+      background: var(--blue); animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(99,102,241,0.4); }
+      50%       { opacity: 0.7; box-shadow: 0 0 0 6px rgba(99,102,241,0); }
     }
 
     h1 {
-      font-size: clamp(42px, 7vw, 80px);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 24px;
+      font-size: clamp(48px, 8vw, 92px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -3px;
+      margin-bottom: 28px;
       color: white;
     }
 
-    h1 .accent { color: var(--accent); }
+    .grad-text {
+      background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #22d3ee 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
     .hero-sub {
       font-size: clamp(16px, 2vw, 20px);
-      color: var(--muted);
-      max-width: 540px;
-      margin: 0 auto 44px;
-      line-height: 1.7;
+      color: var(--muted2);
+      max-width: 560px;
+      margin: 0 auto 48px;
+      line-height: 1.75;
       font-weight: 400;
     }
 
     .hero-cta {
       display: flex; align-items: center; gap: 14px;
       flex-wrap: wrap; justify-content: center;
+      margin-bottom: 16px;
     }
-
-    .hero-cta .btn { font-size: 15px; padding: 13px 28px; }
 
     .hero-note {
       font-size: 12px; color: var(--muted);
-      margin-top: 16px;
+      display: flex; align-items: center; justify-content: center; gap: 16px;
     }
 
-    /* ── App window mockup ── */
-    .mockup-wrap {
+    .hero-note span { display: flex; align-items: center; gap: 5px; }
+
+    .dot-sep { color: var(--border2); }
+
+    /* ── Stats bar ── */
+    .stats-bar {
       margin-top: 72px;
-      width: 100%; max-width: 720px;
+      width: 100%; max-width: 640px;
+      display: flex; justify-content: center; gap: 0;
+      border: 1px solid var(--border2);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+    }
+
+    .stat-item {
+      flex: 1; padding: 20px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-size: 26px; font-weight: 800; color: white;
+      letter-spacing: -1px; line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 11px; color: var(--muted); font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+
+    /* ── Mockup ── */
+    .mockup-section {
+      padding: 80px 6% 0;
+      display: flex; justify-content: center;
+    }
+
+    .mockup-outer {
+      width: 100%; max-width: 780px;
       position: relative;
+    }
+
+    .mockup-glow {
+      position: absolute; inset: -1px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.4), rgba(168,85,247,0.3), rgba(34,211,238,0.2));
+      filter: blur(1px);
+      z-index: 0;
     }
 
     .mockup {
+      position: relative; z-index: 1;
       background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+      box-shadow: 0 60px 120px rgba(0,0,0,0.8);
     }
 
     .mockup-bar {
-      height: 32px;
+      height: 40px;
       background: var(--bg3);
       border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-      padding: 0 12px;
+      display: flex; align-items: center;
+      padding: 0 16px; gap: 12px;
     }
 
-    .mockup-bar-title {
-      font-size: 10px; color: rgba(255,255,255,0.3);
-      font-weight: 500; letter-spacing: 0.5px;
+    .traffic-lights { display: flex; gap: 6px; }
+    .tl {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .tl-r { background: #ff5f57; }
+    .tl-y { background: #ffbd2e; }
+    .tl-g { background: #28ca41; }
+
+    .mockup-title {
+      font-size: 11px; color: rgba(255,255,255,0.25);
+      font-weight: 500; margin: 0 auto;
+      letter-spacing: 0.3px;
     }
 
-    .mockup-body {
-      padding: 24px;
-      display: flex; flex-direction: column; gap: 16px;
+    .mockup-body { padding: 28px 28px 24px; }
+
+    .mockup-tabs {
+      display: flex; gap: 2px; margin-bottom: 20px;
+    }
+    .mockup-tab {
+      padding: 6px 16px; border-radius: 8px;
+      font-size: 11px; font-weight: 600;
+      cursor: default;
+    }
+    .mockup-tab.active {
+      background: rgba(99,102,241,0.15);
+      color: var(--blue2);
+      border: 1px solid rgba(99,102,241,0.25);
+    }
+    .mockup-tab.inactive {
+      color: var(--muted);
+    }
+
+    .mockup-q-label {
+      font-size: 10px; font-weight: 600; color: var(--muted);
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 8px;
     }
 
     .mockup-question {
-      font-size: 13px; color: rgba(255,255,255,0.5);
-      background: rgba(255,255,255,0.04);
+      font-size: 13px; color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 14px;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .mockup-a-label {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 10px; font-weight: 600; color: var(--blue2);
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .live-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #4ade80; animation: pulse-g 1.5s infinite;
+    }
+
+    @keyframes pulse-g {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
 
     .mockup-answer {
-      font-size: 13px; color: rgba(255,255,255,0.85);
-      line-height: 1.7;
+      font-size: 13.5px; color: rgba(255,255,255,0.82);
+      line-height: 1.75;
     }
 
-    .mockup-answer p + p { margin-top: 10px; }
+    .mockup-answer p + p { margin-top: 12px; }
 
     .mockup-cursor {
       display: inline-block;
       width: 2px; height: 14px;
-      background: var(--accent);
+      background: var(--blue2);
       animation: blink 1s infinite;
       vertical-align: middle;
       margin-left: 2px;
+      border-radius: 1px;
     }
 
     @keyframes blink {
@@ -222,285 +384,495 @@
       50% { opacity: 0; }
     }
 
-    /* ── Section ── */
-    section { padding: 100px 5%; }
+    .mockup-footer {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
 
-    .section-label {
-      font-size: 12px; font-weight: 600;
+    .mockup-meta {
+      font-size: 11px; color: var(--muted);
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .mockup-ttft {
+      font-size: 11px; color: #4ade80; font-weight: 600;
+    }
+
+    /* ── Sections ── */
+    section { padding: 120px 6%; }
+
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700;
       letter-spacing: 2px; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 14px;
+      color: var(--blue2); margin-bottom: 16px;
     }
 
     h2 {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 800; letter-spacing: -1px;
-      color: white; margin-bottom: 16px;
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-weight: 800; letter-spacing: -1.5px;
+      color: white; line-height: 1.1;
     }
 
     .section-sub {
-      font-size: 17px; color: var(--muted);
-      max-width: 480px; line-height: 1.7;
+      font-size: 18px; color: var(--muted2);
+      max-width: 500px; line-height: 1.75;
+      margin-top: 16px;
     }
 
     /* ── Features ── */
-    .features { background: var(--bg2); }
+    #features {
+      background: linear-gradient(180deg, transparent, var(--bg2) 10%, var(--bg2) 90%, transparent);
+    }
 
-    .features-header { text-align: center; margin-bottom: 64px; }
-    .features-header .section-sub { margin: 0 auto; }
+    .features-header { text-align: center; margin-bottom: 72px; }
+    .features-header .section-sub { margin: 16px auto 0; }
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
       max-width: 1100px; margin: 0 auto;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
     }
 
     .feature-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: border-color 0.2s, transform 0.2s;
+      background: var(--bg2);
+      padding: 36px 32px;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
     }
 
-    .feature-card:hover {
-      border-color: rgba(236,72,153,0.3);
-      transform: translateY(-3px);
+    .feature-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
     }
+
+    .feature-card:hover { background: rgba(99,102,241,0.05); }
+    .feature-card:hover::before { opacity: 1; }
 
     .feature-icon {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      background: rgba(236,72,153,0.1);
-      border: 1px solid rgba(236,72,153,0.2);
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.2);
       display: flex; align-items: center; justify-content: center;
-      font-size: 20px; margin-bottom: 18px;
+      font-size: 22px; margin-bottom: 20px;
     }
 
     .feature-card h3 {
       font-size: 16px; font-weight: 700; color: white;
-      margin-bottom: 8px;
+      margin-bottom: 10px; letter-spacing: -0.3px;
     }
 
     .feature-card p {
-      font-size: 14px; color: var(--muted); line-height: 1.6;
+      font-size: 14px; color: var(--muted); line-height: 1.65;
     }
 
     /* ── How it works ── */
-    .how { max-width: 900px; margin: 0 auto; }
+    #how { position: relative; }
 
-    .how-header { text-align: center; margin-bottom: 64px; }
-    .how-header .section-sub { margin: 0 auto; }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 32px;
-      position: relative;
+    .how-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px;
+      align-items: center;
     }
+
+    .steps { display: flex; flex-direction: column; gap: 0; }
 
     .step {
-      display: flex; flex-direction: column; align-items: flex-start;
-      gap: 14px;
+      display: flex; gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: default;
+      transition: background 0.2s;
+      padding: 24px 20px;
+      border-radius: 12px;
+      margin-bottom: 4px;
     }
+
+    .step:hover { background: rgba(255,255,255,0.02); }
 
     .step-num {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: rgba(236,72,153,0.12);
-      border: 1px solid rgba(236,72,153,0.25);
+      width: 36px; height: 36px; flex-shrink: 0; border-radius: 10px;
+      background: rgba(99,102,241,0.12);
+      border: 1px solid rgba(99,102,241,0.25);
       display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 700; color: var(--accent);
+      font-size: 13px; font-weight: 800; color: var(--blue2);
+      margin-top: 2px;
     }
 
-    .step h3 {
-      font-size: 16px; font-weight: 700; color: white;
+    .step-content h3 {
+      font-size: 16px; font-weight: 700; color: white; margin-bottom: 6px;
     }
 
-    .step p {
-      font-size: 14px; color: var(--muted); line-height: 1.6;
+    .step-content p {
+      font-size: 14px; color: var(--muted); line-height: 1.65;
+    }
+
+    .how-visual {
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    }
+
+    .how-visual-label {
+      font-size: 11px; font-weight: 600; color: var(--muted);
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .settings-row {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+
+    .settings-field {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+
+    .sf-label {
+      font-size: 10px; font-weight: 600; color: var(--muted);
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .sf-val {
+      font-size: 13px; color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+    }
+
+    .sf-val.filled { color: rgba(255,255,255,0.9); }
+
+    .settings-btn {
+      margin-top: 8px;
+      width: 100%; padding: 12px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(168,85,247,0.15));
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 10px;
+      color: var(--blue2); font-size: 13px; font-weight: 600;
+      text-align: center; cursor: default;
     }
 
     /* ── Download ── */
     .download-section {
       text-align: center;
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .download-box {
-      max-width: 560px; margin: 0 auto;
+      max-width: 600px; margin: 0 auto;
+      position: relative;
     }
 
-    .download-box h2 { margin-bottom: 12px; }
+    .download-box h2 { margin: 12px 0; }
+    .download-box .section-sub { margin: 0 auto 48px; }
 
-    .download-box .section-sub { margin: 0 auto 40px; text-align: center; }
-
-    .platform-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 12px; color: var(--muted);
-      margin-top: 14px;
+    .download-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border2);
+      border-radius: 20px;
+      padding: 40px;
+      backdrop-filter: blur(8px);
     }
+
+    .platform-info {
+      display: flex; align-items: center; justify-content: center;
+      gap: 24px; margin-top: 24px;
+      font-size: 13px; color: var(--muted);
+    }
+
+    .platform-info span { display: flex; align-items: center; gap: 6px; }
+
+    .check-icon { color: #4ade80; }
 
     /* ── Footer ── */
     footer {
-      padding: 40px 5%;
+      padding: 40px 6%;
       border-top: 1px solid var(--border);
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 16px;
     }
 
     .footer-logo {
-      display: flex; align-items: center; gap: 8px;
-      font-weight: 700; font-size: 15px; color: white;
-      text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 16px; color: white;
+      text-decoration: none; letter-spacing: -0.3px;
     }
+
+    .footer-logo .logo-icon { width: 28px; height: 28px; font-size: 12px; border-radius: 8px; }
 
     .footer-right {
       font-size: 13px; color: var(--muted);
+      display: flex; align-items: center; gap: 20px;
     }
 
+    .footer-right a { color: var(--muted); text-decoration: none; }
+    .footer-right a:hover { color: var(--text); }
+
     /* ── Responsive ── */
-    @media (max-width: 600px) {
-      nav { padding: 0 4%; }
-      .nav-link { display: none; }
-      section { padding: 72px 4%; }
-      h1 { letter-spacing: -1px; }
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .how-inner { grid-template-columns: 1fr; gap: 48px; }
+      .how-visual { display: none; }
     }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 5%; }
+      .nav-links { display: none; }
+      section { padding: 80px 5%; }
+      h1 { letter-spacing: -2px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .stats-bar { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item:last-child { border-bottom: none; }
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
+  <!-- Background -->
+  <div class="bg-orbs">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+
   <!-- Nav -->
   <nav>
     <a href="#" class="nav-logo">
-      <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
-        <defs>
-          <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f9a8d4"/>
-            <stop offset="100%" stop-color="#ec4899"/>
-          </linearGradient>
-        </defs>
-        <path d="M5 23 L14 4" stroke="url(#ng)" stroke-width="3" stroke-linecap="round"/>
-        <path d="M14 4 L23 23" stroke="url(#ng)" stroke-width="3" stroke-linecap="round"/>
-        <path d="M9 17 L19 17" stroke="url(#ng)" stroke-width="2.5" stroke-linecap="round"/>
-        <circle cx="14" cy="2.5" r="1.5" fill="url(#ng)"/>
-      </svg>
+      <div class="logo-icon">
+        <svg width="18" height="18" viewBox="0 0 28 28" fill="none">
+          <path d="M5 23 L14 4" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          <path d="M14 4 L23 23" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          <path d="M9 17 L19 17" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="14" cy="2.5" r="1.5" fill="white"/>
+        </svg>
+      </div>
       Ace
     </a>
-    <div class="nav-right">
+    <div class="nav-links">
       <a href="#features" class="nav-link">Features</a>
       <a href="#how" class="nav-link">How it works</a>
-      <a href="#download" class="btn btn-primary">Download</a>
+    </div>
+    <div class="nav-right">
+      <a href="#download" class="btn btn-primary">Download Free</a>
     </div>
   </nav>
 
+  <main>
+
   <!-- Hero -->
   <section class="hero">
-    <div class="badge">
-      <span class="badge-dot"></span>
-      AI-powered · Real-time · Invisible
+    <div class="hero-eyebrow">
+      <span class="eyebrow-dot"></span>
+      AI-Powered · Real-Time · Screen-Share Invisible
     </div>
-    <h1>The interview coach<br /><span class="accent">beside you.</span></h1>
+    <h1>Ace your interview.<br /><span class="grad-text">Every time.</span></h1>
     <p class="hero-sub">
-      Ace listens to interview questions and instantly generates spoken-word answers
-      grounded in your resume — invisible to screen share, always on.
+      Silent AI coach sitting beside you in real interviews. Hears the question, streams a grounded answer from your resume — invisible to Zoom, Teams, and Meet.
     </p>
     <div class="hero-cta">
-      <a href="#download" class="btn btn-primary">
+      <a href="#download" class="btn btn-primary btn-large">
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
         </svg>
         Download for Windows
       </a>
-      <a href="#how" class="btn btn-ghost">See how it works</a>
+      <a href="#how" class="btn btn-ghost btn-large">How it works →</a>
     </div>
-    <p class="hero-note">Free · Windows 10/11 · No account required</p>
+    <p class="hero-note">
+      <span>✓ Free forever</span>
+      <span class="dot-sep">·</span>
+      <span>✓ Windows 10/11</span>
+      <span class="dot-sep">·</span>
+      <span>✓ No account needed</span>
+    </p>
 
-    <!-- Mockup -->
-    <div class="mockup-wrap">
-      <div class="mockup">
-        <div class="mockup-bar">
-          <span class="mockup-bar-title">Ace · The Interview Coach Beside You</span>
-        </div>
-        <div class="mockup-body">
-          <div class="mockup-question">
-            Q: Tell me about a time you had to deal with a difficult stakeholder.
-          </div>
-          <div class="mockup-answer">
-            <p>At JPMorgan, a senior financial analyst kept bypassing the data team entirely — pulling raw tables directly from Redshift and building his own Excel-based reports. The problem was his numbers were diverging from the official dashboards because he was hitting unprocessed data before our transformation logic ran.</p>
-            <p>Rather than escalating it as a process violation, I sat down with him and walked through exactly where his numbers were coming from versus where ours were. Once he saw the specific transformation steps he was missing — currency normalization, transaction deduplication — he understood why the gap existed. I built him a dedicated view that matched his workflow but pulled from the curated layer.</p>
-            <p>Arcadian Infracom's cross-functional data work requires exactly that — meeting stakeholders where they are rather than enforcing process from above.<span class="mockup-cursor"></span></p>
-          </div>
-        </div>
+    <div class="stats-bar reveal">
+      <div class="stat-item">
+        <div class="stat-num">&lt; 2s</div>
+        <div class="stat-label">First word</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">Answer rules</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Screen-invisible</div>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="features" id="features">
-    <div class="features-header">
-      <div class="section-label">Features</div>
-      <h2>Everything you need.<br />Nothing you don't.</h2>
-      <p class="section-sub">Built for real interviews — not demos. Every feature designed around what actually happens in the room.</p>
+  <!-- Mockup -->
+  <div class="mockup-section reveal">
+    <div class="mockup-outer">
+      <div class="mockup-glow"></div>
+      <div class="mockup">
+        <div class="mockup-bar">
+          <div class="traffic-lights">
+            <div class="tl tl-r"></div>
+            <div class="tl tl-y"></div>
+            <div class="tl tl-g"></div>
+          </div>
+          <span class="mockup-title">Ace · Interview Mode · Amazon · SDE-II</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-tabs">
+            <div class="mockup-tab active">Interview</div>
+            <div class="mockup-tab inactive">Practice</div>
+            <div class="mockup-tab inactive">Settings</div>
+          </div>
+          <div class="mockup-q-label">Question detected</div>
+          <div class="mockup-question">
+            Tell me about a time you had to deal with a difficult stakeholder.
+          </div>
+          <div class="mockup-a-label">
+            <span class="live-dot"></span>
+            Ace is answering
+          </div>
+          <div class="mockup-answer">
+            <p>At JPMorgan, a senior analyst kept bypassing the data team — pulling raw tables directly from Redshift and building his own Excel reports. His numbers were diverging from official dashboards because he was hitting unprocessed data before our transformation logic ran.</p>
+            <p>Rather than escalating it as a process violation, I sat with him and walked through exactly where his numbers differed. Once he saw the specific transformation steps he was missing — currency normalization, transaction deduplication — he understood the gap. I built him a dedicated view matching his workflow but pulling from the curated layer.</p>
+            <p>Amazon's ownership principle is exactly that — meeting stakeholders where they are, not enforcing process from above.<span class="mockup-cursor"></span></p>
+          </div>
+          <div class="mockup-footer">
+            <div class="mockup-meta">
+              <span>3 paragraphs</span>
+              <span>·</span>
+              <span>STAR format</span>
+            </div>
+            <div class="mockup-ttft">⚡ 1.8s</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="features-grid">
+  </div>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="features-header reveal">
+      <div class="section-tag">Features</div>
+      <h2>Built for the room.<br />Not the demo.</h2>
+      <p class="section-sub">Every feature designed around what actually happens in a real interview — not a practice run.</p>
+    </div>
+    <div class="features-grid reveal">
       <div class="feature-card">
         <div class="feature-icon">🎯</div>
         <h3>Resume-grounded answers</h3>
-        <p>Every answer pulls from your actual experience — companies, tech stack, numbers. Never generic, never fabricated.</p>
+        <p>Every answer pulls from your actual experience — companies, tech stack, real numbers. Never generic, never fabricated.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">👻</div>
         <h3>Invisible to screen share</h3>
-        <p>Uses Windows display affinity to hide from Zoom, Teams, and Google Meet screen share. Interviewers see nothing.</p>
+        <p>Windows display affinity hides Ace from Zoom, Teams, and Google Meet. The interviewer sees nothing on your screen.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⚡</div>
-        <h3>Real-time streaming</h3>
-        <p>First word appears in under 2 seconds. Answers stream live as you read — no waiting, no blank screen.</p>
+        <h3>Streams in under 2 seconds</h3>
+        <p>First word appears before 2s. Answers stream live as you read — no waiting, no blank screen, no lag.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🎙️</div>
         <h3>Voice capture</h3>
-        <p>Captures the interviewer's voice automatically. No typing required — just listen and read your answer.</p>
+        <p>Picks up the interviewer's voice automatically. No typing mid-interview — just listen and read your answer.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📐</div>
         <h3>Strict answer structure</h3>
-        <p>Behavioral, technical, system design, soft — each question type gets the right format, length, and closing.</p>
+        <p>Behavioral, technical, system design, soft, closing — each type gets the right format, length, and closing line.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🧠</div>
         <h3>Conversation memory</h3>
-        <p>Remembers earlier answers in the session. Follow-up questions get context-aware responses, not repeated content.</p>
+        <p>Remembers answers from earlier in the session. Follow-ups get context-aware responses — no repeated content.</p>
       </div>
     </div>
   </section>
 
   <!-- How it works -->
   <section id="how">
-    <div class="how">
-      <div class="how-header">
-        <div class="section-label">How it works</div>
-        <h2>Three steps.<br />Then forget it's there.</h2>
-        <p class="section-sub">Set it up once before your interview. After that, it just works silently in the background.</p>
+    <div class="how-inner">
+      <div>
+        <div class="section-tag reveal">How it works</div>
+        <h2 class="reveal">Set it once.<br />Forget it's there.</h2>
+        <p class="section-sub reveal">Three steps before your interview. After that, Ace runs silently in the background.</p>
+        <div class="steps" style="margin-top: 40px;">
+          <div class="step reveal">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Paste your resume + JD</h3>
+              <p>Add your resume, job description, and target company in Settings. One time per role.</p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Start your session</h3>
+              <p>Choose Interview or Practice mode. Ace appears as a tiny overlay — invisible to everyone on the call.</p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Read your answers</h3>
+              <p>Interviewer asks. Ace streams a structured, resume-backed answer. You read it out loud confidently.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>Paste your resume + JD</h3>
-          <p>Add your resume, the job description, and target company name in Settings. One time per role.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>Start your session</h3>
-          <p>Choose Interview or Practice mode. Ace sits in a small overlay, invisible to everyone else on the call.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>Read your answers</h3>
-          <p>Interviewer asks a question. Ace generates a grounded, structured answer in seconds. You read it aloud.</p>
+
+      <div class="how-visual reveal">
+        <div class="how-visual-label">Settings — one-time setup</div>
+        <div class="settings-row">
+          <div class="settings-field">
+            <div class="sf-label">Company</div>
+            <div class="sf-val filled">Amazon — SDE-II</div>
+          </div>
+          <div class="settings-field">
+            <div class="sf-label">Resume</div>
+            <div class="sf-val filled">Jagadish Reddy · 6 years · Data Engineer → ML Infra</div>
+          </div>
+          <div class="settings-field">
+            <div class="sf-label">Job Description</div>
+            <div class="sf-val" style="font-size:12px; color: rgba(255,255,255,0.45); max-height: 52px; overflow:hidden;">We are looking for a Senior Software Development Engineer to join our Advertising Platform team. You will own backend systems...</div>
+          </div>
+          <div class="settings-field">
+            <div class="sf-label">AI Model</div>
+            <div class="sf-val filled">Claude Sonnet 4 (Recommended)</div>
+          </div>
+          <div class="settings-btn">✓ Ready for interview</div>
         </div>
       </div>
     </div>
@@ -508,44 +880,62 @@
 
   <!-- Download -->
   <section class="download-section" id="download">
+    <div class="download-glow"></div>
     <div class="download-box">
-      <div class="section-label">Download</div>
-      <h2>Ready when you are.</h2>
-      <p class="section-sub">Free download. No account. No subscription. Just install and go.</p>
-      <a href="https://github.com/jagadishreddybutukuri/jagx-copilot-releases/releases/latest" class="btn btn-primary" style="font-size:16px; padding: 15px 36px;">
-        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-        </svg>
-        Download Ace — Free
-      </a>
-      <div class="platform-badge">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/>
-        </svg>
-        Windows 10 / 11 · 64-bit
+      <div class="section-tag reveal" style="justify-content:center;">Download</div>
+      <h2 class="reveal">Ready when you are.</h2>
+      <p class="section-sub reveal" style="text-align:center; margin: 16px auto 40px;">Free download. No account. No subscription. No tracking. Just install and go.</p>
+      <div class="download-card reveal">
+        <a href="https://github.com/Myselfgitcone/ace-landing/releases/latest" class="btn btn-primary" style="font-size:16px; padding: 16px 48px; width:100%; justify-content:center;">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Download Ace — Free
+        </a>
+        <div class="platform-info">
+          <span><span class="check-icon">✓</span> Windows 10 / 11</span>
+          <span><span class="check-icon">✓</span> 64-bit</span>
+          <span><span class="check-icon">✓</span> ~8 MB installer</span>
+        </div>
       </div>
     </div>
   </section>
 
+  </main>
+
   <!-- Footer -->
   <footer>
     <a href="#" class="footer-logo">
-      <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
-        <defs>
-          <linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f9a8d4"/>
-            <stop offset="100%" stop-color="#ec4899"/>
-          </linearGradient>
-        </defs>
-        <path d="M5 23 L14 4" stroke="url(#fg)" stroke-width="3" stroke-linecap="round"/>
-        <path d="M14 4 L23 23" stroke="url(#fg)" stroke-width="3" stroke-linecap="round"/>
-        <path d="M9 17 L19 17" stroke="url(#fg)" stroke-width="2.5" stroke-linecap="round"/>
-        <circle cx="14" cy="2.5" r="1.5" fill="url(#fg)"/>
-      </svg>
+      <div class="logo-icon">
+        <svg width="14" height="14" viewBox="0 0 28 28" fill="none">
+          <path d="M5 23 L14 4" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          <path d="M14 4 L23 23" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          <path d="M9 17 L19 17" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="14" cy="2.5" r="1.5" fill="white"/>
+        </svg>
+      </div>
       Ace
     </a>
-    <div class="footer-right">Built by Jay &nbsp;·&nbsp; The Interview Coach Beside You</div>
+    <div class="footer-right">
+      <span>Built by Jay</span>
+      <span>·</span>
+      <span>The Interview Coach Beside You</span>
+    </div>
   </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+  </script>
 
 </body>
 </html>
