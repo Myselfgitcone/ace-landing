@@ -58,11 +58,31 @@
     .hero-note{font-size:12px;color:var(--mu);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
     .hero-note span{display:flex;align-items:center;gap:5px}
 
-    /* app mockup */
-    .mockup-wrap{margin-top:72px;width:100%;max-width:860px;perspective:1200px}
-    .mockup-tilt{transform:rotateX(6deg) rotateY(-2deg);transform-style:preserve-3d;transition:transform .4s ease;border-radius:20px;box-shadow:0 60px 120px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06),0 0 80px rgba(99,102,241,.15)}
-    .mockup-wrap:hover .mockup-tilt{transform:rotateX(1deg) rotateY(0deg)}
-    .app-window{border-radius:20px;overflow:hidden;background:#0d0d14;border:1px solid rgba(255,255,255,.08)}
+    /* ── Laptop mockup ── */
+    .laptop-outer{width:100%;max-width:1040px;margin-top:60px;perspective:1500px;position:relative}
+    .laptop-tilt{transform:rotateX(4deg) rotateY(-1deg);transform-style:preserve-3d;transition:transform .5s ease}
+    .laptop-outer:hover .laptop-tilt{transform:rotateX(0.5deg) rotateY(0)}
+    /* Screen bezel */
+    .laptop-screen{background:linear-gradient(175deg,#22222c 0%,#15151d 100%);border-radius:16px 16px 0 0;padding:11px 11px 0;border:1.5px solid rgba(255,255,255,.1);border-bottom:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+    /* Camera */
+    .laptop-cam{width:7px;height:7px;border-radius:50%;background:#1a1a22;border:1px solid rgba(255,255,255,.1);margin:0 auto 8px;position:relative}
+    .laptop-cam::after{content:'';position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(74,222,128,.25);top:50%;left:50%;transform:translate(-50%,-50%)}
+    /* Display area */
+    .laptop-display{border-radius:6px;overflow:hidden;background:#050507;border:1px solid rgba(0,0,0,.5)}
+    /* Hinge */
+    .laptop-hinge{height:7px;background:linear-gradient(180deg,#0e0e14,#1c1c24);border-left:1.5px solid rgba(255,255,255,.07);border-right:1.5px solid rgba(255,255,255,.07);margin:0 -1.5px;box-shadow:0 3px 10px rgba(0,0,0,.5)}
+    /* Base/keyboard */
+    .laptop-base{background:linear-gradient(175deg,#1e1e28 0%,#141419 100%);height:40px;border-radius:0 0 20px 20px;border:1.5px solid rgba(255,255,255,.07);border-top:none;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.8),0 8px 20px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.03)}
+    /* Keyboard rows hint */
+    .laptop-base::before{content:'';position:absolute;top:10px;left:50%;transform:translateX(-50%);width:55%;height:3px;border-radius:2px;background:rgba(255,255,255,.04);box-shadow:0 6px 0 rgba(255,255,255,.03)}
+    /* Trackpad */
+    .laptop-trackpad{position:absolute;width:130px;height:20px;border-radius:5px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);top:50%;left:50%;transform:translate(-50%,-40%)}
+    /* Bottom glow */
+    .laptop-glow{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);width:70%;height:80px;background:radial-gradient(ellipse at center,rgba(99,102,241,.4) 0%,transparent 70%);pointer-events:none;filter:blur(24px)}
+    /* App window inside laptop (no own border-radius) */
+    .app-window{overflow:hidden;background:#0d0d14}
+    /* Keep old class for compat */
+    .mockup-wrap{display:none}
     .drag-bar{height:44px;background:linear-gradient(90deg,#111118,#16161f);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;padding:0 14px;gap:10px}
     .timer-badge{background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);border-radius:6px;padding:3px 9px;font-size:11px;font-weight:600;color:#818cf8;letter-spacing:.3px}
     .drag-center{font-size:12px;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.3px;flex:1;text-align:center}
@@ -334,9 +354,12 @@
       <span>&#10003; Bring your own API key</span>
     </div>
 
-    <!-- APP MOCKUP -->
-    <div class="mockup-wrap reveal" style="margin-top:72px">
-      <div class="mockup-tilt">
+    <!-- LAPTOP MOCKUP -->
+    <div class="laptop-outer reveal">
+      <div class="laptop-tilt">
+        <div class="laptop-screen">
+          <div class="laptop-cam"></div>
+          <div class="laptop-display">
         <div class="app-window">
           <div class="drag-bar">
             <div style="display:flex;align-items:center;gap:6px">
@@ -406,8 +429,13 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+          </div><!-- /laptop-display -->
+        </div><!-- /laptop-screen -->
+        <div class="laptop-hinge"></div>
+        <div class="laptop-base"><div class="laptop-trackpad"></div></div>
+      </div><!-- /laptop-tilt -->
+      <div class="laptop-glow"></div>
+    </div><!-- /laptop-outer -->
   </section>
 
   <!-- HOW IT WORKS -->
