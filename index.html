@@ -128,7 +128,7 @@
     .sub{font-size:17px;color:var(--mu2);max-width:480px;line-height:1.75;margin-top:14px}
 
     /* Screens grid */
-    .screens{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:56px auto 0}
+    .screens{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1200px;margin:56px auto 0}
     .sc{background:var(--bg2);border:1px solid var(--bd2);border-radius:18px;padding:24px;overflow:hidden}
     .sc.hi{border-color:rgba(99,102,241,.3)}
     .sc-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mu);margin-bottom:16px}
@@ -355,7 +355,15 @@
             </div>
           </div>
         </div>
-        <div style="font-size:13px;color:var(--mu);line-height:1.6;margin-top:8px;">46×46px draggable circle. Sits anywhere on your screen. Click to expand. Invisible on screen share.</div>
+        <div style="margin-top:10px;">
+          <div style="font-size:14px;font-weight:700;color:white;margin-bottom:6px;">Your silent co-pilot.</div>
+          <div style="font-size:13px;color:var(--mu);line-height:1.65;">Tiny draggable bubble — park it in any corner. Click once to expand the full answer panel. Completely invisible on screen share. Nobody knows it's there.</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-top:10px;">
+            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mu2);"><span style="color:var(--gr)">✓</span> Drag anywhere on screen</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mu2);"><span style="color:var(--gr)">✓</span> Click to expand / collapse</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mu2);"><span style="color:var(--gr)">✓</span> Hidden from Zoom, Teams, Meet</div>
+          </div>
+        </div>
       </div>
 
       <!-- Live answer -->
@@ -380,6 +388,33 @@
         <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mu);margin-top:10px;">
           <span>Answer streams word by word</span><span style="color:var(--gr);font-weight:600;">⚡ 1.6s</span>
         </div>
+      </div>
+
+      <!-- Coding / Vision mode -->
+      <div class="sc reveal">
+        <div class="sc-lbl bl">Vision — coding rounds</div>
+        <div class="mini">
+          <div class="mini-bar">
+            <div class="mtl mr"></div><div class="mtl my"></div><div class="mtl mg"></div>
+            <div class="mini-ttl">Ace · Interview · Screenshot</div>
+          </div>
+          <div class="mini-body">
+            <div style="display:flex;align-items:center;gap:5px;margin-bottom:7px;">
+              <div style="display:flex;align-items:center;gap:4px;padding:2px 7px;border-radius:100px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);font-size:9px;font-weight:600;color:#4ade80;"><span style="width:5px;height:5px;border-radius:50%;background:#4ade80;"></span>Vision ON</div>
+              <div style="font-size:9px;color:#3b82f6;font-weight:600;">2 pages queued →</div>
+            </div>
+            <!-- Fake code editor -->
+            <div style="background:#0d1117;border:1px solid #30363d;border-radius:6px;padding:8px 10px;font-family:monospace;font-size:9px;line-height:1.7;margin-bottom:7px;">
+              <div><span style="color:#ff7b72;">def</span> <span style="color:#d2a8ff;">two_sum</span><span style="color:#e6edf3;">(nums, target):</span></div>
+              <div style="color:#8b949e;">    # find indices that sum to target</div>
+              <div><span style="color:#e6edf3;">    seen = </span><span style="color:#79c0ff;">{}</span></div>
+              <div><span style="color:#ff7b72;">    for</span><span style="color:#e6edf3;"> i, n </span><span style="color:#ff7b72;">in</span><span style="color:#e6edf3;"> enumerate(nums):</span></div>
+              <div><span style="color:#e6edf3;">        diff = target - n<span style="display:inline-block;width:1.5px;height:8px;background:#6366f1;animation:blink 1s infinite;vertical-align:middle;margin-left:1px;border-radius:1px;"></span></span></div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:7px 9px;font-size:9px;color:#1e293b;line-height:1.55;">Use a hash map. For each num, check if <strong>target − num</strong> is already stored. O(n) time, O(n) space. Return [seen[diff], i].</div>
+          </div>
+        </div>
+        <div style="font-size:13px;color:var(--mu);line-height:1.6;margin-top:10px;">Screenshot any coding problem. Ace reads it and answers — works on HackerRank, LeetCode, any coding platform.</div>
       </div>
 
       <!-- Practice mode -->
@@ -495,8 +530,18 @@
       <div class="faq-a">No. Ace uses <strong>WDA_EXCLUDEFROMCAPTURE</strong> — a Windows API that makes any window invisible to all screen capture and screen share tools. Zoom, Teams, Meet, and OBS all receive a blank window. No known bypass exists for this on Windows 10/11.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="faq(this)">Is it really free?<div class="faq-icon">+</div></button>
-      <div class="faq-a">Yes. Ace itself is free. You pay your AI provider (Anthropic, OpenAI, Google, or OpenRouter) directly. Most have free tiers or very low costs — a full interview session typically costs under $0.10.</div>
+      <button class="faq-q" onclick="faq(this)">Is it really free? What do I actually pay?<div class="faq-icon">+</div></button>
+      <div class="faq-a">
+        Ace is free to download and use. The only cost is your AI API usage — you pay Anthropic, OpenAI, or Google directly at their standard rates. A full 45-minute interview session typically costs <strong>under $0.10</strong>.<br/><br/>
+        Compare that to interview coaching tools that charge <strong>$50–$100+/month</strong> — you'd spend less in an entire year of Ace usage than one month of those subscriptions.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="faq(this)">How do I get an API key cheaply?<div class="faq-icon">+</div></button>
+      <div class="faq-a">
+        Put <strong>$5 or $10 on OpenRouter</strong> — that's it. OpenRouter gives you access to Claude, GPT-4o, Gemini, and 100+ other models from one account, one key. $5 will last you months of interview prep. No subscription, no auto-renewal, just pay-as-you-go.<br/><br/>
+        Instead of $50–$100/month locked into one tool, you spend a few dollars and get the best models in the world on demand.
+      </div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="faq(this)">What AI models does Ace support?<div class="faq-icon">+</div></button>
