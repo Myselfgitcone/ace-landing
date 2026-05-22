@@ -67,8 +67,8 @@
     /* Camera */
     .laptop-cam{width:7px;height:7px;border-radius:50%;background:#1a1a22;border:1px solid rgba(255,255,255,.1);margin:0 auto 8px;position:relative}
     .laptop-cam::after{content:'';position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(74,222,128,.25);top:50%;left:50%;transform:translate(-50%,-50%)}
-    /* Display area */
-    .laptop-display{border-radius:6px;overflow:hidden;background:#050507;border:1px solid rgba(0,0,0,.5)}
+    /* Display area — fixed height so app fills screen */
+    .laptop-display{border-radius:6px;overflow:hidden;background:#0d0d14;border:1px solid rgba(0,0,0,.5);height:420px;display:flex;flex-direction:column}
     /* Hinge */
     .laptop-hinge{height:7px;background:linear-gradient(180deg,#0e0e14,#1c1c24);border-left:1.5px solid rgba(255,255,255,.07);border-right:1.5px solid rgba(255,255,255,.07);margin:0 -1.5px;box-shadow:0 3px 10px rgba(0,0,0,.5)}
     /* Base/keyboard */
@@ -79,8 +79,16 @@
     .laptop-trackpad{position:absolute;width:130px;height:20px;border-radius:5px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);top:50%;left:50%;transform:translate(-50%,-40%)}
     /* Bottom glow */
     .laptop-glow{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);width:70%;height:80px;background:radial-gradient(ellipse at center,rgba(99,102,241,.4) 0%,transparent 70%);pointer-events:none;filter:blur(24px)}
-    /* App window inside laptop (no own border-radius) */
-    .app-window{overflow:hidden;background:#0d0d14;zoom:1.07}
+    /* App window fills laptop display entirely */
+    .app-window{background:#0d0d14;zoom:1.07;display:flex;flex-direction:column;height:100%}
+    /* Answer panel grows to fill space; question box fixed at bottom */
+    .answer-panel-wrap{flex:1;min-height:0;display:flex;flex-direction:column;margin:8px 12px 0;overflow:hidden}
+    .answer-panel-inner{flex:1;background:white;border-radius:10px;border:1px solid #e5e7eb;display:flex;flex-direction:column;overflow:hidden;position:relative}
+    /* Overlapping state elements */
+    .ans-switch{position:relative;flex:1;overflow:hidden}
+    .ans-empty,.ans-body{position:absolute;inset:0;overflow-y:auto}
+    .q-switch{position:relative;min-height:56px}
+    .q-blank-state,.q-detected{position:absolute;left:0;right:0;top:0}
     /* Keep old class for compat */
     .mockup-wrap{display:none}
     .drag-bar{height:44px;background:linear-gradient(90deg,#111118,#16161f);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;padding:0 14px;gap:10px}
@@ -426,78 +434,66 @@
               <div style="padding:3px 8px;border-radius:6px;font-size:11px;background:rgba(255,255,255,.04);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.06)">&#128247;</div>
             </div>
           </div>
-          <!-- ── ANSWER PANEL (top, white) ── -->
-          <div style="margin:10px 12px 6px;background:white;border-radius:10px;border:1px solid #e5e7eb;min-height:118px;overflow:hidden">
-            <!-- Sticky header -->
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 12px;border-bottom:1px solid #f3f4f6;background:rgba(255,255,255,.97)">
-              <div style="display:flex;align-items:center;gap:7px">
-                <span style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1.4px;color:#0ea5e9">Answer</span>
-                <!-- Generating (phases C-D) -->
-                <span class="gen-badge" style="display:flex;align-items:center;gap:3px;font-size:9px;color:#9ca3af">
-                  <span style="width:5px;height:5px;border-radius:50%;background:#38bdf8;animation:pulse 1s infinite;display:inline-block"></span>Generating
-                </span>
-                <!-- Word count (phase E) -->
-                <span class="done-badge" style="font-size:9px;color:#9ca3af">52w &middot; ~24s</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:5px">
-                <div style="display:flex;align-items:center;gap:1px;background:#f3f4f6;border-radius:5px;padding:2px 5px">
-                  <span style="width:14px;height:14px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9ca3af">&#8722;</span>
-                  <span style="font-size:9px;color:#6b7280;width:26px;text-align:center">100%</span>
-                  <span style="width:14px;height:14px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9ca3af">+</span>
+          <!-- ── ANSWER PANEL — flex:1 fills all remaining height ── -->
+          <div class="answer-panel-wrap">
+            <div class="answer-panel-inner">
+              <!-- Header (sticky) -->
+              <div style="flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:6px 12px;border-bottom:1px solid #f3f4f6">
+                <div style="display:flex;align-items:center;gap:7px">
+                  <span style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1.4px;color:#0ea5e9">Answer</span>
+                  <span class="gen-badge" style="display:flex;align-items:center;gap:3px;font-size:9px;color:#9ca3af">
+                    <span style="width:5px;height:5px;border-radius:50%;background:#38bdf8;animation:pulse 1s infinite;display:inline-block"></span>Generating
+                  </span>
+                  <span class="done-badge" style="font-size:9px;color:#9ca3af">52w &middot; ~24s</span>
                 </div>
-                <!-- Action buttons (phase E) -->
-                <span class="ans-actions" style="display:flex;align-items:center;gap:3px">
-                  <span style="font-size:9px;color:#0ea5e9;border:1px solid #d1d5db;border-radius:4px;padding:1px 6px">Retry</span>
-                  <span style="font-size:9px;color:#0ea5e9;border:1px solid #d1d5db;border-radius:4px;padding:1px 6px">Copy</span>
-                  <span style="font-size:9px;color:#6b7280;border:1px solid #d1d5db;border-radius:4px;padding:1px 6px">Clear</span>
-                </span>
+                <div style="display:flex;align-items:center;gap:5px">
+                  <div style="display:flex;align-items:center;gap:1px;background:#f3f4f6;border-radius:5px;padding:2px 5px">
+                    <span style="width:14px;height:14px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9ca3af">&#8722;</span>
+                    <span style="font-size:9px;color:#6b7280;width:26px;text-align:center">100%</span>
+                    <span style="width:14px;height:14px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9ca3af">+</span>
+                  </div>
+                  <span class="ans-actions" style="display:flex;align-items:center;gap:3px">
+                    <span style="font-size:9px;color:#0ea5e9;border:1px solid #d1d5db;border-radius:4px;padding:1px 6px">Retry</span>
+                    <span style="font-size:9px;color:#0ea5e9;border:1px solid #d1d5db;border-radius:4px;padding:1px 6px">Copy</span>
+                    <span style="font-size:9px;color:#6b7280;border:1px solid #d1d5db;border-radius:4px;padding:1px 6px">Clear</span>
+                  </span>
+                </div>
               </div>
-            </div>
-            <!-- Empty state (phases A-B) -->
-            <div class="ans-empty" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;gap:6px">
-              <div style="width:28px;height:28px;border-radius:50%;background:#f0f9ff;display:flex;align-items:center;justify-content:center">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              <!-- Switching body: empty state vs answer text (absolutely overlaid) -->
+              <div class="ans-switch">
+                <div class="ans-empty" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:20px">
+                  <div style="width:28px;height:28px;border-radius:50%;background:#f0f9ff;display:flex;align-items:center;justify-content:center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                  </div>
+                  <span style="font-size:11px;color:#9ca3af;font-weight:500">Waiting for a question&hellip;</span>
+                </div>
+                <div class="ans-body" style="padding:14px 16px">
+                  <p style="font-size:12.5px;color:#111827;line-height:1.85;margin:0">
+                    <span class="w w0">At Cargill, our <span style="color:#0284c7;font-weight:600">Kafka</span> pipeline fell behind during peak harvest season&mdash;</span><span class="w w1">ingesting 2M events/hour through a single-threaded consumer. </span><span class="w w2">I profiled the bottleneck to partition contention, increased partitions 8&rarr;32, </span><span class="w w3">deployed 4 parallel consumers, and added a <span style="color:#0284c7;font-weight:600">Redis</span> cache layer </span><span class="w w4">for hot lookup keys. Throughput jumped from 2M to <span style="color:#059669;font-weight:600">14M events/hour</span> </span><span class="w w5">within 48 hours&mdash;zero downtime, zero data loss.</span><span class="anim-cursor-wrap" style="display:inline"><span class="a-cursor" style="background:#38bdf8;margin-left:2px"></span></span>
+                  </p>
+                </div>
               </div>
-              <span style="font-size:11px;color:#9ca3af;font-weight:500">Waiting for a question&hellip;</span>
-            </div>
-            <!-- Answer text streaming in (phases D-E) -->
-            <div class="ans-body" style="padding:12px 16px">
-              <p style="font-size:12.5px;color:#111827;line-height:1.8;margin:0">
-                <span class="w w0">At Cargill, our <span style="color:#0284c7;font-weight:600">Kafka</span> pipeline fell behind during peak season&mdash;</span><span class="w w1">ingesting 2M events/hour through a single-threaded consumer. </span><span class="w w2">I profiled the bottleneck, increased partitions from 8&rarr;32, </span><span class="w w3">and deployed 4 parallel consumers with a <span style="color:#0284c7;font-weight:600">Redis</span> cache layer </span><span class="w w4">for hot lookup keys. Throughput jumped to 14M events/hour </span><span class="w w5">within 48 hours&mdash;zero downtime, zero data loss.</span><span class="anim-cursor-wrap" style="display:inline"><span class="a-cursor" style="background:#38bdf8;margin-left:2px"></span></span>
-              </p>
             </div>
           </div>
 
-          <!-- ── QUESTION BOX (bottom, dark) ── -->
-          <div style="margin:0 12px 10px;background:#111111;border-radius:10px;border:1px solid #242728">
+          <!-- ── QUESTION BOX — pinned bottom ── -->
+          <div style="margin:6px 12px 10px;background:#111111;border-radius:10px;border:1px solid #242728;flex-shrink:0">
             <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 12px 3px">
-              <div style="display:flex;align-items:center;gap:5px">
-                <!-- Red dot when listening, gray when idle -->
-                <span class="qdot-listen" style="width:5px;height:5px;border-radius:50%;background:#f87171;display:inline-block;animation:pulse 1s infinite"></span>
-                <span class="qdot-idle" style="width:5px;height:5px;border-radius:50%;background:#3f3f46;display:inline-block"></span>
-                <span class="qlabel-listen" style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#f87171">Listening&hellip;</span>
-                <span class="qlabel-idle" style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#71717a">Question</span>
+              <div style="display:flex;align-items:center;gap:5px;position:relative;height:14px">
+                <span class="qdot-listen" style="width:5px;height:5px;border-radius:50%;background:#f87171;display:inline-block;position:absolute"></span>
+                <span class="qdot-idle" style="width:5px;height:5px;border-radius:50%;background:#3f3f46;display:inline-block;position:absolute"></span>
+                <span style="margin-left:9px;display:flex;align-items:center;gap:4px;position:relative">
+                  <span class="qlabel-listen" style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#f87171;position:absolute">Listening&hellip;</span>
+                  <span class="qlabel-idle" style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#71717a;position:absolute">Question</span>
+                </span>
               </div>
               <span class="qw-count" style="font-size:9px;color:#3f3f46">13w</span>
             </div>
-            <!-- Transcript text -->
-            <div style="padding:3px 12px 6px">
-              <div class="q-blank-state" style="font-size:11px;font-style:italic;color:#4b5563">Waiting for question&hellip;</div>
-              <div class="q-detected" style="font-size:11.5px;color:#c9cdd4;line-height:1.6">Tell me about a time you had to scale a data pipeline under tight deadlines.</div>
+            <div style="padding:3px 12px 4px;position:relative;min-height:32px">
+              <div class="q-blank-state" style="font-size:11px;font-style:italic;color:#4b5563;position:absolute">Waiting for question&hellip;</div>
+              <div class="q-detected" style="font-size:11.5px;color:#c9cdd4;line-height:1.6;position:absolute;right:12px;left:0">Tell me about a time you scaled a data pipeline under tight deadlines.</div>
             </div>
-            <p style="font-size:9px;text-align:center;padding-bottom:5px;color:#3f3f46">Click to edit &middot; Enter to resubmit</p>
-          </div>
-
-          <!-- TTFT row -->
-          <div class="ttft-row" style="position:relative;min-height:26px;overflow:hidden">
-            <div class="ttft-listen" style="display:flex;align-items:center;gap:8px;position:absolute">
-              <div class="ttft-dot anim-live"></div>
-              <div class="ttft-text">Listening&hellip;</div>
-            </div>
-            <div class="ttft-stream" style="display:flex;align-items:center;gap:8px;position:absolute">
-              <div style="width:6px;height:6px;border-radius:50%;background:#818cf8;animation:pulse 1.2s infinite"></div>
-              <div class="ttft-text">TTFT 0.41s &middot; Streaming</div>
-            </div>
+            <p style="font-size:9px;text-align:center;padding:4px 0 6px;color:#3f3f46">Click to edit &middot; Enter to resubmit</p>
           </div>
         </div>
           </div><!-- /laptop-display -->
