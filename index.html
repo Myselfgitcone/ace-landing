@@ -526,34 +526,49 @@
   </div>
   <div class="faq-list">
     <div class="faq-item">
-      <button class="faq-q" onclick="faq(this)">Can interviewers detect Ace on screen share?<div class="faq-icon">+</div></button>
-      <div class="faq-a">No. Ace uses <strong>WDA_EXCLUDEFROMCAPTURE</strong> — a Windows API that makes any window invisible to all screen capture and screen share tools. Zoom, Teams, Meet, and OBS all receive a blank window. No known bypass exists for this on Windows 10/11.</div>
+      <button class="faq-q" onclick="faq(this)">Can interviewers detect Ace?<div class="faq-icon">+</div></button>
+      <div class="faq-a">No. Ace is completely invisible on screen share. Zoom, Teams, Meet, and any recording software see a blank window — not your answers. Only you can see it.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="faq(this)">Is it really free? What do I actually pay?<div class="faq-icon">+</div></button>
-      <div class="faq-a">
-        Ace is free to download and use. The only cost is your AI API usage — you pay Anthropic, OpenAI, or Google directly at their standard rates. A full 45-minute interview session typically costs <strong>under $0.10</strong>.<br/><br/>
-        Compare that to interview coaching tools that charge <strong>$50–$100+/month</strong> — you'd spend less in an entire year of Ace usage than one month of those subscriptions.
-      </div>
+      <button class="faq-q" onclick="faq(this)">Is it free? What do I actually pay?<div class="faq-icon">+</div></button>
+      <div class="faq-a">Ace is free. The only cost is AI usage — paid directly to Anthropic, OpenAI, or Google at their standard rates. A full 45-minute interview session costs <strong>under $0.10</strong>. Most providers have free tiers to start.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="faq(this)">How do I get an API key cheaply?<div class="faq-icon">+</div></button>
-      <div class="faq-a">
-        Put <strong>$5 or $10 on OpenRouter</strong> — that's it. OpenRouter gives you access to Claude, GPT-4o, Gemini, and 100+ other models from one account, one key. $5 will last you months of interview prep. No subscription, no auto-renewal, just pay-as-you-go.<br/><br/>
-        Instead of $50–$100/month locked into one tool, you spend a few dollars and get the best models in the world on demand.
-      </div>
+      <button class="faq-q" onclick="faq(this)">How do I keep AI costs low?<div class="faq-icon">+</div></button>
+      <div class="faq-a">Put <strong>$5 or $10 on OpenRouter</strong>. One account gives you access to Claude, GPT-4o, Gemini, and 100+ models — pay only for what you use, no subscription. $5 lasts months of interview prep. Compare that to tools charging $50–$100/month.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="faq(this)">What AI models does Ace support?<div class="faq-icon">+</div></button>
-      <div class="faq-a">Claude Sonnet 4 (recommended), GPT-4o, Gemini Pro, and others via OpenRouter. You bring your own API key. Model is switchable mid-session from the app header.</div>
+      <div class="faq-a">Claude Sonnet 4 (recommended for best answers), GPT-4o, Gemini Pro, and more. You bring your own API key. Model is switchable mid-session from the app header.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="faq(this)">Does Ace store my resume or interview data?<div class="faq-icon">+</div></button>
-      <div class="faq-a">No. Everything stays on your machine. Resume, JD, and session history are stored locally. Nothing is sent to any Ace server — only to your chosen AI provider's API.</div>
+      <div class="faq-a">No. Everything stays on your machine — resume, job description, session history. Nothing goes to any Ace server. Only your AI provider receives the prompts, same as using ChatGPT directly.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="faq(this)">What question types does Ace handle?<div class="faq-icon">+</div></button>
-      <div class="faq-a">Behavioral (STAR format), technical deep-dives, system design, soft skills, "tell me about yourself" (starts with I'm a [role]...), and closing questions ("do you have any questions for us"). Each type has its own format and length rules.</div>
+      <div class="faq-a">Behavioral (STAR), technical, system design, soft skills, "tell me about yourself", and closing questions ("do you have any questions for us?"). Each type has its own structure, length, and closing strategy.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Cost highlight banner -->
+<section style="padding:0 6% 80px;">
+  <div class="reveal" style="max-width:900px;margin:0 auto;background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(168,85,247,.06));border:1px solid rgba(99,102,241,.2);border-radius:20px;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--bl2);margin-bottom:12px;">Real cost comparison</div>
+      <div style="font-size:28px;font-weight:900;color:white;letter-spacing:-1px;line-height:1.2;margin-bottom:8px;">$0.10 per interview.<br/>Not $100 per month.</div>
+      <div style="font-size:15px;color:var(--mu2);line-height:1.65;max-width:440px;">Other interview tools charge $50–$100+/month. With Ace, put $5–10 on OpenRouter and get access to every top AI model — Claude, GPT-4o, Gemini — for months of interview prep.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;min-width:200px;">
+      <div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);border-radius:12px;padding:16px 20px;">
+        <div style="font-size:11px;color:#f87171;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Other tools</div>
+        <div style="font-size:26px;font-weight:900;color:#f87171;letter-spacing:-1px;">$50–$100<span style="font-size:14px;font-weight:500;">/mo</span></div>
+      </div>
+      <div style="background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2);border-radius:12px;padding:16px 20px;">
+        <div style="font-size:11px;color:var(--gr);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Ace</div>
+        <div style="font-size:26px;font-weight:900;color:var(--gr);letter-spacing:-1px;">~$0.10<span style="font-size:14px;font-weight:500;"> per session</span></div>
+      </div>
     </div>
   </div>
 </section>
