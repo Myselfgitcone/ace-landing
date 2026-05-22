@@ -489,9 +489,9 @@
               </div>
               <span class="qw-count" style="font-size:9px;color:#3f3f46">13w</span>
             </div>
-            <div style="padding:3px 12px 4px;position:relative;min-height:32px">
-              <div class="q-blank-state" style="font-size:11px;font-style:italic;color:#4b5563;position:absolute">Waiting for question&hellip;</div>
-              <div class="q-detected" style="font-size:11.5px;color:#c9cdd4;line-height:1.6;position:absolute;right:12px;left:0">Tell me about a time you scaled a data pipeline under tight deadlines.</div>
+            <div style="position:relative;height:46px;overflow:hidden;margin:0 12px">
+              <div class="q-blank-state" style="position:absolute;top:0;left:0;right:0;font-size:11px;font-style:italic;color:#4b5563;padding:2px 0">Waiting for question&hellip;</div>
+              <div class="q-detected" style="position:absolute;top:0;left:0;right:0;font-size:11.5px;color:#c9cdd4;line-height:1.55;padding:2px 0">Tell me about a time you scaled a data pipeline under tight deadlines.</div>
             </div>
             <p style="font-size:9px;text-align:center;padding:4px 0 6px;color:#3f3f46">Click to edit &middot; Enter to resubmit</p>
           </div>
@@ -665,7 +665,7 @@
 
       <!-- Screen 3: Live interview session -->
       <div class="screen-card reveal" style="display:flex;flex-direction:column">
-        <div style="background:#07080a;overflow:hidden;flex:1">
+        <div style="background:#07080a;overflow:hidden;flex:1;display:flex;flex-direction:column">
           <!-- Drag bar -->
           <div style="height:32px;background:#07080a;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;padding:0 8px;gap:6px;position:relative">
             <!-- Left: timer + live -->
@@ -698,27 +698,31 @@
               <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:5px;padding:2px 5px;font-size:9px;color:rgba(255,255,255,.3)">&#128247;</div>
             </div>
           </div>
-          <!-- Question box -->
-          <div style="margin:10px 10px 0;background:#0a0a12;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px 12px">
-            <div style="font-size:9px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px">Question</div>
-            <div style="font-size:11px;color:rgba(255,255,255,.65);line-height:1.5">Tell me about a time you had to design a system for high availability. What trade-offs did you make?</div>
-          </div>
-          <!-- Answer panel (WHITE) -->
-          <div style="margin:8px 10px 10px;background:#f8f9fa;border-radius:8px;padding:12px">
-            <div style="height:9px;border-radius:3px;background:#dde1e7;margin-bottom:7px"></div>
-            <div style="height:9px;border-radius:3px;background:#dde1e7;margin-bottom:7px;width:90%"></div>
-            <div style="height:9px;border-radius:3px;background:#dde1e7;margin-bottom:7px;width:83%"></div>
-            <div style="height:9px;border-radius:3px;background:#dde1e7;margin-bottom:7px"></div>
-            <div style="height:9px;border-radius:3px;background:#dde1e7;margin-bottom:7px;width:76%"></div>
-            <div style="display:flex;align-items:center;gap:3px">
-              <div style="height:9px;border-radius:3px;background:#dde1e7;width:110px"></div>
-              <div style="display:inline-block;width:2px;height:12px;background:#6366f1;border-radius:1px;animation:blink .9s infinite"></div>
+          <!-- Answer panel (WHITE, top, flex:1) -->
+          <div style="margin:8px 10px 0;background:white;border-radius:8px;border:1px solid #4ade80;flex:1;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 10px;border-bottom:1px solid #f3f4f6">
+              <div style="display:flex;align-items:center;gap:5px">
+                <span style="font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#0ea5e9">Answer</span>
+                <span style="font-size:8px;color:#9ca3af">47w &middot; ~22s</span>
+              </div>
+              <div style="display:flex;gap:3px">
+                <span style="font-size:8px;color:#0ea5e9;border:1px solid #d1d5db;border-radius:3px;padding:1px 5px">Retry</span>
+                <span style="font-size:8px;color:#0ea5e9;border:1px solid #d1d5db;border-radius:3px;padding:1px 5px">Copy</span>
+              </div>
+            </div>
+            <div style="padding:10px 12px;font-size:11px;color:#111827;line-height:1.75">
+              I&#8217;d prioritize availability over consistency. Use active-passive failover with <span style="color:#0284c7;font-weight:600">Redis</span> for session state, geo-distributed replicas, and circuit breakers on all downstream calls.
+              <span style="display:inline-block;width:2px;height:12px;background:#38bdf8;border-radius:1px;animation:blink .9s infinite;vertical-align:middle;margin-left:2px"></span>
             </div>
           </div>
-          <!-- TTFT -->
-          <div style="padding:5px 10px 8px;display:flex;align-items:center;gap:6px;border-top:1px solid rgba(255,255,255,.04)">
-            <div style="width:5px;height:5px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite"></div>
-            <div style="font-size:9px;color:#6b7280">TTFT 0.38s &middot; Streaming</div>
+          <!-- Question box (dark, bottom) -->
+          <div style="margin:6px 10px 8px;background:#111111;border-radius:8px;border:1px solid #242728">
+            <div style="display:flex;align-items:center;gap:5px;padding:5px 10px 3px">
+              <span style="width:5px;height:5px;border-radius:50%;background:#3f3f46;display:inline-block"></span>
+              <span style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#71717a">Question</span>
+            </div>
+            <div style="padding:0 10px 4px;font-size:10px;color:#c9cdd4;line-height:1.5">Tell me about a time you designed a system for high availability.</div>
+            <p style="font-size:8px;text-align:center;padding-bottom:4px;color:#3f3f46">Click to edit &middot; Enter to resubmit</p>
           </div>
         </div>
         <div class="sc-info">
@@ -729,7 +733,7 @@
 
       <!-- Screen 4: Vision / Coding mode -->
       <div class="screen-card reveal" style="display:flex;flex-direction:column">
-        <div style="background:#07080a;overflow:hidden;flex:1">
+        <div style="background:#07080a;overflow:hidden;flex:1;display:flex;flex-direction:column">
           <!-- Drag bar -->
           <div style="height:32px;background:#07080a;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;padding:0 8px;gap:6px;position:relative">
             <div style="display:flex;align-items:center;gap:5px">
@@ -775,25 +779,32 @@
               <div style="padding:3px 6px;border-radius:5px;font-size:9px;color:#6b7280">Clear</div>
             </div>
           </div>
-          <!-- Question box -->
-          <div style="margin:8px 10px 0;background:#0a0a12;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px 12px">
-            <div style="font-size:9px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px">Question</div>
-            <div style="font-size:11px;color:rgba(255,255,255,.65);line-height:1.5">Given an array of integers, return indices of the two numbers that add up to a target.</div>
-          </div>
-          <!-- Answer panel (WHITE) -->
-          <div style="margin:8px 10px 10px;background:#f8f9fa;border-radius:8px;padding:12px">
-            <div style="height:9px;border-radius:3px;background:#dde1e7;margin-bottom:7px;width:95%"></div>
-            <div style="height:9px;border-radius:3px;background:#dde1e7;margin-bottom:7px;width:80%"></div>
-            <div style="height:9px;border-radius:3px;background:#dde1e7;margin-bottom:7px"></div>
-            <div style="display:flex;align-items:center;gap:3px">
-              <div style="height:9px;border-radius:3px;background:#dde1e7;width:90px"></div>
-              <div style="display:inline-block;width:2px;height:12px;background:#6366f1;border-radius:1px;animation:blink .9s infinite"></div>
+          <!-- Answer panel (WHITE, top, flex:1) -->
+          <div style="margin:8px 10px 0;background:white;border-radius:8px;border:1px solid #4ade80;flex:1;overflow:hidden;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 10px;border-bottom:1px solid #f3f4f6">
+              <div style="display:flex;align-items:center;gap:5px">
+                <span style="font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#0ea5e9">Answer</span>
+                <span style="font-size:8px;color:#9ca3af;display:flex;align-items:center;gap:3px"><span style="width:4px;height:4px;border-radius:50%;background:#38bdf8;display:inline-block;animation:pulse 1s infinite"></span>Generating</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:2px;background:#f3f4f6;border-radius:4px;padding:1px 4px">
+                <span style="font-size:9px;color:#9ca3af;font-weight:700">&#8722;</span>
+                <span style="font-size:8px;color:#6b7280;width:22px;text-align:center">100%</span>
+                <span style="font-size:9px;color:#9ca3af;font-weight:700">+</span>
+              </div>
+            </div>
+            <div style="padding:10px 12px;font-size:11px;color:#111827;line-height:1.75">
+              Use a hash map for O(1) lookup. Iterate once: for each num, check if <span style="color:#0284c7;font-weight:600">target - num</span> exists in the map. If yes, return both indices.
+              <span style="display:inline-block;width:2px;height:12px;background:#38bdf8;border-radius:1px;animation:blink .9s infinite;vertical-align:middle;margin-left:2px"></span>
             </div>
           </div>
-          <!-- TTFT -->
-          <div style="padding:5px 10px 8px;display:flex;align-items:center;gap:6px;border-top:1px solid rgba(255,255,255,.04)">
-            <div style="width:5px;height:5px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite"></div>
-            <div style="font-size:9px;color:#6b7280">TTFT 0.22s &middot; Streaming</div>
+          <!-- Question box (dark, bottom) -->
+          <div style="margin:6px 10px 8px;background:#111111;border-radius:8px;border:1px solid #242728">
+            <div style="display:flex;align-items:center;gap:5px;padding:5px 10px 3px">
+              <span style="width:5px;height:5px;border-radius:50%;background:#f87171;display:inline-block;animation:pulse 1s infinite"></span>
+              <span style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#f87171">Listening&hellip;</span>
+            </div>
+            <div style="padding:0 10px 4px;font-size:10px;color:#c9cdd4;line-height:1.5">Given an array of integers, return indices of two numbers that add up to a target.</div>
+            <p style="font-size:8px;text-align:center;padding-bottom:4px;color:#3f3f46">Click to edit &middot; Enter to resubmit</p>
           </div>
         </div>
         <div class="sc-info">
