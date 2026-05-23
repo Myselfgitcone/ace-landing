@@ -984,7 +984,8 @@
       if (!el || !data.tag_name) return;
       const d = new Date(data.published_at);
       const fmt = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      el.textContent = data.tag_name + ' · ' + fmt;
+      const time = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+      el.textContent = 'Last Update: ' + fmt + ' ' + time;
     })
     .catch(() => {});
 </script>
