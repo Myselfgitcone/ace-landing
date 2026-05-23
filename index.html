@@ -976,18 +976,15 @@
     if (e.target === this) this.style.display = 'none';
   });
 
-  // Fetch latest release timestamp from GitHub
-  fetch('https://api.github.com/repos/Myselfgitcone/Hidden-AI-landing/releases/latest')
-    .then(r => r.json())
-    .then(data => {
-      const el = document.getElementById('release-badge');
-      if (!el || !data.published_at) return;
-      const d = new Date(data.published_at);
-      const fmt = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      const time = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-      el.textContent = 'Last Update: ' + fmt + ' ' + time;
-    })
-    .catch(() => {});
+  // Show current local time as last update
+  (function() {
+    const el = document.getElementById('release-badge');
+    if (!el) return;
+    const d = new Date();
+    const fmt = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    const time = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+    el.textContent = 'Last Update: ' + fmt + ' ' + time;
+  })();
 </script>
 <!-- Download Instructions Modal -->
 <div id="dl-modal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(0,0,0,.7);backdrop-filter:blur(6px)">
