@@ -926,10 +926,10 @@
       <div class="sec-label" style="margin-bottom:12px">Download</div>
       <h2>Ready when you are</h2>
       <p>Download Hidden AI for Windows. Set up in 3 minutes. Your next interview is yours to own.</p>
-      <a class="btn btn-p btn-lg" href="https://github.com/Myselfgitcone/Hidden-AI-landing/releases/download/v0.1.2/Hidden.AI_0.1.0_x64-setup.exe" style="font-size:16px;padding:16px 44px">
+      <button onclick="document.getElementById('dl-modal').style.display='flex'" class="btn btn-p btn-lg" style="font-size:16px;padding:16px 44px;border:none;cursor:pointer">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download for Windows &mdash; Free
-      </a>
+      </button>
       <div class="dl-note">Windows 10 / 11 &middot; 64-bit &middot; ~8 MB</div>
       <div class="dl-tags">
         <div class="dl-tag">&#10003; No account needed</div>
@@ -963,6 +963,19 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
+  // Nav download buttons also open modal
+  document.querySelectorAll('a[href="#download"].btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('dl-modal').style.display = 'flex';
+    });
+  });
+
+  // Download modal close on backdrop click
+  document.getElementById('dl-modal').addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
+  });
+
   // Fetch latest release timestamp from GitHub
   fetch('https://api.github.com/repos/Myselfgitcone/Hidden-AI-landing/releases/latest')
     .then(r => r.json())
@@ -975,5 +988,57 @@
     })
     .catch(() => {});
 </script>
+<!-- Download Instructions Modal -->
+<div id="dl-modal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(0,0,0,.7);backdrop-filter:blur(6px)">
+  <div style="background:#111116;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:36px 32px;max-width:420px;width:90%;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.6)">
+    <!-- Close -->
+    <button onclick="document.getElementById('dl-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;color:#71717a;cursor:pointer;font-size:20px;line-height:1;padding:4px">&#10005;</button>
+
+    <!-- Header -->
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+      <div style="width:40px;height:40px;border-radius:10px;background:#0ea5e9;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </div>
+      <div>
+        <div style="font-size:16px;font-weight:700;color:white">How to Install</div>
+        <div style="font-size:12px;color:#71717a;margin-top:1px">Takes about 2 minutes</div>
+      </div>
+    </div>
+
+    <!-- Steps -->
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px">
+      <div style="display:flex;gap:14px;align-items:flex-start">
+        <div style="width:24px;height:24px;border-radius:50%;background:#0ea5e9;color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:#f4f4f5">Click Download below</div>
+          <div style="font-size:12px;color:#71717a;margin-top:2px">The .exe file will save to your Downloads folder</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start">
+        <div style="width:24px;height:24px;border-radius:50%;background:#0ea5e9;color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:#f4f4f5">Windows shows a SmartScreen warning</div>
+          <div style="font-size:12px;color:#71717a;margin-top:2px">This is normal for new independent apps. Click <span style="color:#f4f4f5;font-weight:600">"More info"</span> → then <span style="color:#f4f4f5;font-weight:600">"Run anyway"</span></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start">
+        <div style="width:24px;height:24px;border-radius:50%;background:#0ea5e9;color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:#f4f4f5">Follow the installer</div>
+          <div style="font-size:12px;color:#71717a;margin-top:2px">Done in under a minute. App launches automatically.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Download button -->
+    <a href="https://github.com/Myselfgitcone/Hidden-AI-landing/releases/download/v0.1.2/Hidden.AI_0.1.0_x64-setup.exe"
+       style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;background:#0ea5e9;color:white;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:background .15s"
+       onmouseover="this.style.background='#0284c7'" onmouseout="this.style.background='#0ea5e9'">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Hidden AI — Free
+    </a>
+    <div style="text-align:center;font-size:11px;color:#52525b;margin-top:10px">Windows 10/11 · 64-bit · ~3 MB · No account needed</div>
+  </div>
+</div>
 </body>
 </html>
