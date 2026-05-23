@@ -306,9 +306,9 @@
   <div class="nav-links">
     <a class="nl" href="#how">How it works</a>
     <a class="nl" href="#faq">FAQ</a>
-    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px">
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
       <a class="btn btn-p" href="#download">Download &mdash; Free</a>
-      <span id="release-badge" style="font-size:10px;font-weight:500;color:#a1a1aa;letter-spacing:.2px;line-height:1;display:block;min-height:12px"></span>
+      <span style="font-size:10px;font-weight:500;color:#a1a1aa;letter-spacing:.2px;line-height:1">Updated May 23, 2026</span>
     </div>
   </div>
 </nav>
@@ -976,15 +976,6 @@
     if (e.target === this) this.style.display = 'none';
   });
 
-  // Show current local time as last update
-  (function() {
-    const el = document.getElementById('release-badge');
-    if (!el) return;
-    const d = new Date();
-    const fmt = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    const time = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-    el.textContent = 'Last Update: ' + fmt + ' ' + time;
-  })();
 </script>
 <!-- Download Instructions Modal -->
 <div id="dl-modal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(0,0,0,.7);backdrop-filter:blur(6px)">
