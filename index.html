@@ -296,7 +296,15 @@
 <nav>
   <a class="logo" href="#">
     <div class="logo-mark">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <svg width="22" height="22" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="nav-j" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#ffffff"/></linearGradient>
+          <linearGradient id="nav-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0ea5e9" stop-opacity="0"/><stop offset="40%" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="100%" stop-color="#7dd3fc" stop-opacity="1"/></linearGradient>
+        </defs>
+        <circle cx="256" cy="256" r="184" fill="none" stroke="url(#nav-ring)" stroke-width="10" stroke-linecap="round" stroke-dasharray="900 1200"/>
+        <path d="M 308 124 L 308 304 C 308 360 264 396 212 396 C 160 396 116 360 116 308" fill="none" stroke="url(#nav-j)" stroke-width="60" stroke-linecap="round"/>
+        <circle cx="384" cy="160" r="16" fill="#ffffff"/>
+      </svg>
     </div>
     <span style="display:flex;align-items:flex-end;gap:6px;line-height:1">
       <span style="font-size:17px;font-weight:700;color:white">JagX</span>
@@ -364,7 +372,7 @@
                 <span style="width:5px;height:5px;border-radius:50%;background:#4ade80;display:inline-block" class="anim-live"></span>Live
               </div>
             </div>
-            <div class="drag-center">JagX &middot; The Interview Coach Beside You</div>
+            <div class="drag-center">JagX &middot; The Invisible Interview Coach</div>
             <div class="drag-right">
               <!-- back + home group -->
               <div style="display:flex;align-items:center;border-radius:6px;border:1px solid rgba(75,85,99,.6);overflow:hidden">
@@ -587,14 +595,22 @@
         <div style="background:#030712;border-radius:0;overflow:hidden;flex:1">
           <!-- Drag bar -->
           <div style="height:28px;background:#030712;border-bottom:1px solid #111827;display:flex;align-items:center;justify-content:center;position:relative;padding:0 8px">
-            <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.2px">JagX &middot; The Interview Coach Beside You</span>
+            <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.2px">JagX &middot; The Invisible Interview Coach</span>
             <div style="position:absolute;right:8px;width:20px;height:20px;border-radius:5px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,.3)">&#8722;</div>
           </div>
           <!-- Content -->
           <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:20px">
             <div style="text-align:center">
-              <div style="width:48px;height:48px;border-radius:16px;background:#0284c7;display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+              <div style="width:48px;height:48px;border-radius:16px;background:radial-gradient(circle at 38% 32%,#0c1a2e,#060d18);border:1px solid rgba(255,255,255,0.12);box-shadow:0 0 24px rgba(14,165,233,0.4);display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
+                <svg width="32" height="32" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="ms2-j" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7dd3fc"/><stop offset="100%" stop-color="#0284c7"/></linearGradient>
+                    <linearGradient id="ms2-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0ea5e9" stop-opacity="0"/><stop offset="40%" stop-color="#0ea5e9" stop-opacity="0.9"/><stop offset="100%" stop-color="#7dd3fc" stop-opacity="1"/></linearGradient>
+                  </defs>
+                  <circle cx="256" cy="256" r="184" fill="none" stroke="url(#ms2-ring)" stroke-width="10" stroke-linecap="round" stroke-dasharray="900 1200"/>
+                  <path d="M 308 124 L 308 304 C 308 360 264 396 212 396 C 160 396 116 360 116 308" fill="none" stroke="url(#ms2-j)" stroke-width="60" stroke-linecap="round"/>
+                  <circle cx="384" cy="160" r="16" fill="#ffffff"/>
+                </svg>
               </div>
               <div style="font-size:13px;color:#38bdf8;font-weight:500;margin-bottom:4px">Good Morning, Jay &#128075;</div>
               <div style="font-size:20px;font-weight:800;color:white;letter-spacing:-.5px;margin-bottom:4px">Welcome To JagX</div>
@@ -637,7 +653,7 @@
               </div>
             </div>
             <!-- Center: title -->
-            <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:10px;font-weight:600;color:rgba(255,255,255,.3);white-space:nowrap">JagX &middot; The Interview Coach Beside You</span>
+            <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:10px;font-weight:600;color:rgba(255,255,255,.3);white-space:nowrap">JagX &middot; The Invisible Interview Coach</span>
             <!-- Right: nav buttons -->
             <div style="margin-left:auto;display:flex;align-items:center;gap:4px">
               <div style="display:flex;border-radius:5px;border:1px solid rgba(75,85,99,.6);overflow:hidden">
@@ -703,7 +719,7 @@
                 <span style="width:5px;height:5px;border-radius:50%;background:#4ade80"></span>Live
               </div>
             </div>
-            <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:10px;font-weight:600;color:rgba(255,255,255,.3);white-space:nowrap">JagX &middot; The Interview Coach Beside You</span>
+            <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:10px;font-weight:600;color:rgba(255,255,255,.3);white-space:nowrap">JagX &middot; The Invisible Interview Coach</span>
             <div style="margin-left:auto;display:flex;align-items:center;gap:4px">
               <div style="display:flex;border-radius:5px;border:1px solid rgba(75,85,99,.6);overflow:hidden">
                 <div style="width:18px;height:18px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:8px;border-right:1px solid rgba(75,85,99,.6)">&#9664;</div>
@@ -943,7 +959,7 @@
 </main>
 
 <footer>
-  <div class="foot-l">JagX &mdash; Built by Jay &middot; The Interview Coach Beside You</div>
+  <div class="foot-l">JagX &mdash; Built by Jay &middot; The Invisible Interview Coach</div>
   <div class="foot-r">
     <a href="#how">How it works</a>
     <a href="#faq">FAQ</a>
